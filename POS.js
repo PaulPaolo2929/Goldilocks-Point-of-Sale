@@ -1,6 +1,5 @@
-
-
 let cart = [];
+const denominations = [500, 200, 100, 50, 20, 10, 5, 1, 0.25];
 
 // Add item to cart
 function addToCart(name, price) {
@@ -17,27 +16,22 @@ function addToCart(name, price) {
 function updateCart() {
     let cartBody = document.getElementById("cart-body");
     let total = 0;
-    cartBody.innerHTML = "";  // Clear previous entries
+    cartBody.innerHTML = "";
 
     cart.forEach((item, index) => {
         let itemTotal = item.price * item.quantity;
         total += itemTotal;
-
         let row = document.createElement("tr");
-        row.innerHTML =  `
-           
-                <td>${item.name}</td>
-                <td>P${item.price.toFixed(2)}</td>
-                <td>${item.quantity}</td>
-                <td>P${itemTotal.toFixed(2)}</td>
-                <td><button onclick="removeItem(${index})">Remove</button></td>
-           
+        row.innerHTML = `
+            <td>${item.name}</td>
+            <td>P${item.price.toFixed(2)}</td>
+            <td>${item.quantity}</td>
+            <td>P${itemTotal.toFixed(2)}</td>
+            <td><button onclick="removeItem(${index})">Remove</button></td>
         `;
         cartBody.appendChild(row);
     });
-
     document.getElementById("cart-total").textContent = `P ${total.toFixed(2)}`;
-
 }
 
 // Remove Item from Cart
@@ -46,61 +40,110 @@ function removeItem(index) {
     updateCart();
 }
 
-// Checkout Process - Updates Receipt and Alerts Total
+// Checkout Process
 function checkout() {
-    
-    updateReceipt();  // Make sure receipt updates when clicking checkout
-
+    updateReceipt();
     let totalAmount = document.getElementById("cart-total").textContent;
     alert("Proceeding to checkout. Total: " + totalAmount);
 }
 
 // Receipt Updater
 function updateReceipt() {
-    let customerInput = document.getElementById("r-Customer");
-    let amountInput = document.getElementById("AmountPaid");
-
-    if (!customerInput || !amountInput) {
-        console.error("Error: One or more input fields not found!");
-        return;
-    }
-
-    let customerName = customerInput.value.trim();
-    let amountPaid = amountInput.value.trim();
-
-    let customerDisplay = document.getElementById("Customer-name");
-    let amountDisplay = document.getElementById("r-paid");
-
-    if (!customerDisplay || !amountDisplay) {
-        console.error("Error: One or more display elements not found!");
-        return;
-    }
-
-    customerDisplay.innerText = customerName || "N/A";
-    amountDisplay.innerText = "P" + (amountPaid || "0.00");
+    let customerName = document.getElementById("r-Customer")?.value.trim() || "N/A";
+    let amountPaid = document.getElementById("AmountPaid")?.value.trim() || "0.00";
+    document.getElementById("Customer-name").innerText = customerName;
+    document.getElementById("r-paid").innerText = "P" + amountPaid;
 }
 
 // Date and Time Updater
 function updateDateTime() {
     let currentDate = new Date();
-
     let dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
     let timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
 
     document.querySelectorAll('.date').forEach(el => {
         el.innerHTML = currentDate.toLocaleDateString('en-US', dateOptions);
     });
-
     document.querySelectorAll('.time').forEach(el => {
         el.innerHTML = currentDate.toLocaleTimeString('en-US', timeOptions);
     });
 }
-
-// Initialize Clock
 updateDateTime();
 setInterval(updateDateTime, 1000);
 
-// Attach checkout function to button
+// Cash Drawer Randomizer
+function cashDrawerRandomizer() {
+    function getDenominationBreakdown(totalAmount) {
+        let remainingAmount = totalAmount;
+        return denominations.map(denomination => {
+            if (remainingAmount <= 0) return { denomination, count: 0 };
+            let maxCount = Math.floor(remainingAmount / denomination);
+            let count = maxCount > 0 ? Math.floor(Math.random() * (maxCount + 1)) : 0;
+            remainingAmount -= count * denomination;
+            remainingAmount = parseFloat(remainingAmount.toFixed(2));
+            return { denomination, count };
+        }).filter(entry => entry.count > 0);
+    }
+
+    function renderTable(breakdown) {
+        const tableBody = document.getElementById("cashDrawerBody");
+        tableBody.innerHTML = breakdown.map(row =>
+            `<tr><td>${row.denomination}</td><td>${row.count}</td><td>${(row.denomination * row.count).toFixed(2)}</td></tr>`
+        ).join('');
+    }
+
+    function handleGenerateAuto() {
+        const totalAmount = parseFloat(document.getElementById("totalAmount").value);
+        if (isNaN(totalAmount) || totalAmount <= 0) {
+            alert("Please enter a valid total amount.");
+            return;
+        }
+        const breakdown = getDenominationBreakdown(totalAmount);
+        renderTable(breakdown);
+    }
+
+    function openManualPanel() {
+        const manualPanel = document.getElementById("manualPanel");
+        const manualInputs = document.getElementById("manualInputs");
+        manualInputs.innerHTML = "";
+        
+        denominations.forEach(denomination => {
+            const div = document.createElement("div");
+            div.innerHTML = `
+                <label>${denomination}: </label>
+                <input type="number" min="0" id="input-${denomination}" value="0">
+            `;
+            manualInputs.appendChild(div);
+        });
+        manualPanel.classList.remove("hidden");
+    }
+
+    function closeManualPanel() {
+        document.getElementById("manualPanel").classList.add("hidden");
+    }
+
+    function handleManualSubmit() {
+        let totalAmount = 0;
+        const breakdown = denominations.map(denomination => {
+            const count = parseInt(document.getElementById(`input-${denomination}`).value) || 0;
+            totalAmount += count * denomination;
+            return { denomination, count };
+        }).filter(entry => entry.count > 0);
+        
+        document.getElementById("totalAmount").value = totalAmount.toFixed(2);
+        renderTable(breakdown);
+        closeManualPanel();
+    }
+
+    // Event Listeners
+    document.getElementById("generateAuto").addEventListener("click", handleGenerateAuto);
+    document.getElementById("manualInputBtn").addEventListener("click", openManualPanel);
+    document.getElementById("submitManual").addEventListener("click", handleManualSubmit);
+    document.getElementById("closePanel").addEventListener("click", closeManualPanel);
+}
+
+cashDrawerRandomizer();
+
 document.addEventListener("DOMContentLoaded", function () {
     let checkoutButton = document.getElementById("checkout-btn");
     if (checkoutButton) {
