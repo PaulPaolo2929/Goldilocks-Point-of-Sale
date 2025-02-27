@@ -11,6 +11,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Slabo+27px&display=swap" rel="stylesheet">
 
+  <style>
+        .hidden { display: none; } /* Hides elements */
+        .panel { border: 1px solid #000; padding: 10px; margin-top: 10px; }
+  </style>
+  
 </head>
 <body>
 
@@ -67,7 +72,11 @@
             <p><strong>Time: </strong><span class="time"></span></p>
             <hr>
                 <span style="color: #b8860b"><strong>Cash Drawer Amount:</strong></span>
-               <b> <div style="background-color: #ffdb58; padding: 10px; color: #b8860b; border-radius: 10px; text-align: center;">200,000</div></b>
+                <div><br>
+                    <input type="number" id="totalAmount" placeholder="Enter Total Amount">
+                    <button id="generateAuto">Generate Auto</button>
+                    <button id="manualInputBtn">Manual Input</button>  
+                </div>
             </div>
         </div>
 
@@ -135,61 +144,30 @@
 
       <div class="Bottom-tableContainer">
             <!-- Current Cash Drawer & Recommended Denomination -->
-            <div class="Cash-DrawerTable">
-                <div class="cash-drawer-container">
-                    <h3>Current Cash Drawer</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Bills</th>
-                                <th>No. of Bills</th>
-                                <th>Amount</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1000</td>
-                                <td>2</td>
-                                <td>2000</td>
-                            </tr>
-                            <tr>
-                                <td>500</td>
-                                <td>2</td>
-                                <td>1000</td>
-                            </tr>
-                            <tr>
-                                <td>200</td>
-                                <td>23</td>
-                                <td>4600</td>
-                            </tr>
-                            <tr>
-                                <td>100</td>
-                                <td>3</td>
-                                <td>300</td>
-                            </tr>
-                            <tr>
-                                <td>50</td>
-                                <td>24</td>
-                                <td>1200</td>
-                            </tr>
-                            <tr>
-                                <td>20</td>
-                                <td>43</td>
-                                <td>860</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>345</td>
-                                <td>345</td>
-                            </tr>
-                            <tr>
-                                <td>0.25</td>
-                                <td>1234</td>
-                                <td>308.50</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>                
+            <div class="cash-drawer-container">
+                <h3>Current Cash Drawer</h3>
+               <!--  -->
+        
+                <!-- Manual Input Form -->
+                <div id="manualPanel" class="panel hidden">
+                    <h4>Enter Breakdown</h4>
+                    <div id="manualInputs"></div>
+                    <button id="submitManual">Submit Breakdown</button>
+                    <button id="closePanel">Close</button>
+                </div>
+        
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Bills</th>
+                            <th>No. of Bills</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cashDrawerBody">
+                        <!-- Breakdown will be inserted here -->
+                    </tbody>
+                </table>
             </div>
             
             <div class="drawer-recommendation">
