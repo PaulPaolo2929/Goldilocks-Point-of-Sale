@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+
+:root {
+    --primary-color: #FFC72C; /* Vibrant Yellow - Used for headers and highlights */
+    --secondary-color: #D9A300; /* Deep Gold - Used for borders and accents */
+    --background-color: #FFF7E6; /* Light Beige - General background */
+    --text-color: #4A2800; /* Dark Brown - Text for contrast */
+    --table-header-color: #FFD700; /* Bright Gold - Table headers */
+    --table-border-color: #B8860B; /* Dark Gold - Borders of tables */
+    --button-danger: #E63946; /* Red - Clear Cart button */
+    --button-primary: #3B82F6; /* Blue - Print Receipt button */
+    --button-success: #28A745; /* Green - Checkout button */
+    --input-border-color: #C4C4C4; /* Light Gray - Input borders */
+    --card-border-color: #E6C200; /* Golden Yellow - Receipt and info section border */
+    --card-border1-color: #fff4b4;
+}
+
+
+/* ========== Global Reset & Base Styles ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto Slab', serif;;
+  }
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    padding: 0px 0px ;
+  }
+  a {
+    text-decoration: none;
+    color: #000;
+  }
+  
+  /* ========== Top Bar ========== */
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary-color); /* Example color, adjust as needed */
+    padding: 10px 20px;
+    border-radius: 0px;
+    margin-bottom: 20px;
+    margin-top: 0px;
+  }
+  .brand-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--text-color);
+  }
+  .nav-links a {
+    margin-left: 20px;
+    font-weight: 600;
+    color: var(--text-color);
+  }
+
+  .nav-links a:hover{
+    color: var(--background-color);
+  }

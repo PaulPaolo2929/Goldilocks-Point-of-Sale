@@ -16,11 +16,11 @@
 
   <!-- Top Navigation Bar -->
   <header class="topbar">
-   <a href=""> <div class="brand-name">Brand Name</div> </a>
+   <a href=""> <div class="brand-name">Goldilocks-POS</div> </a>
     <nav class="nav-links">
       <a href="#">Cashier</a>
-      <a href="#">Products</a>
-      <a href="#">Cash Drawer</a>
+      <a href="Product.html">Products</a>
+      <a href="CashDrawer.html">Cash Drawer</a>
     </nav>
   </header>
 
@@ -43,7 +43,7 @@
       <!-- Customer Info & Product Code -->
       <div class="customer-info">
         <!-- Add your inputs/labels here -->
-         <p>Customer Name: <input type="text" id="Customer-name"> </p>
+        <p>Customer Name: <input type="text" id="r-Customer" oninput="updateReceipt()"> </p>
          <p>Product Code:  <input type="text" name="" id="Product-Code"> </p>
         <button> Add to Cart</button>
          <!-- e.g. Customer Name, Product Code fields -->
@@ -53,10 +53,10 @@
     <div class="information-container">
         <h3>INFORMATIONS</h3>
         <div>
-            <img src="profile-placeholder.png" alt="Profile Picture">
+            <img src="images/Ate.jpg" alt="Profile Picture" width="80" >
             <p>Dhessa Marie Amparo</p>
-            <p>Date: February 24, 2025</p>
-            <p>Time: 00:00:00 AM</p>
+            <p><strong>Date: </strong><span class="date"></span></p>
+            <p><strong>Time: </strong><span class="time"></span></p>
             <div>
                 <strong>Cash Drawer Amount:</strong> <span>200,000</span>
             </div>
@@ -233,10 +233,12 @@
         <p class="header">📍 123 High Street, Laguna, Philippines</p>
         <p class="header">📞 (123) 456-7890</p>
         <hr>
+        <p><strong>Customer name:</strong> <span id="Customer-name"></span></p>
         <p><strong>Receipt No:</strong> <span id="r-number">INV-12345</span></p>
-        <p><strong>Date:</strong> <span id="r-date">February 26, 2025</span></p>
-        <p><strong>Time:</strong> <span id="r-time">10:45 AM</span></p>
         <p><strong>Cashier:</strong> <span id="r-cashier">Dhessa Marie Amparo</span></p>
+        <p><strong>Date: </strong><span class="date"></span></p>
+        <p><strong>Time: </strong><span class="time"></span></p>
+        
     </div>
     
     <!-- Scrollable items section -->
@@ -308,7 +310,7 @@
         <div class="summary-container">
             <h3>SUMMARY</h3>
             <p><strong>Total Amount:</strong> <span>₱12034.99</span></p>
-            <p><strong>Amount Paid:</strong> <input type="text" placeholder="Enter amount"></p>
+            <p><strong>Amount Paid:</strong> <input type="text" placeholder="Enter amount" id="AmountPaid" oninput="updateReceipt()"></p>
             <button class="calculate-btn">
                 Calculate
             </button>
@@ -321,6 +323,9 @@
 
     </aside>
   </main>
+
+  <!-- JS CONNECTOR -->
+  <script src="POS.js"></script>
 
 </body>
 </html>
