@@ -32,37 +32,49 @@
     <div class="UpperParent-cont">
       <div class="Display">
 
+    
       <!-- INFO CONTAINER -->
       <div class="Information">
         <div class="pos-header">
             <!-- POS Header (Point of Sale) --> 
-             <h2>POINT OF SALE</h2>
+        <b><font size="6">POINT OF SALE</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
            </div>
       </div>
 
       <!-- Customer Info & Product Code -->
       <div class="customer-info">
         <!-- Add your inputs/labels here -->
-        <p>Customer Name: <input type="text" id="r-Customer" oninput="updateReceipt()"> </p>
-         <p>Product Code:  <input type="text" name="" id="Product-Code"> </p>
-        <button> Add to Cart</button>
+        <p>Customer Name: <br>
+            <input type="text" id="r-Customer" oninput="updateReceipt()"> </p>
+         <p>Reciept No:  <br>
+            <input type="text" name="" id="Product-Code"> </p>
          <!-- e.g. Customer Name, Product Code fields -->
       </div>
     </div>
 
-    <div class="information-container">
-        <h3>INFORMATIONS</h3>
-        <div>
-            <img src="images/Ate.jpg" alt="Profile Picture" width="80" >
-            <p>Dhessa Marie Amparo</p>
+    <div class="info-container">
+    <h3 style="padding-left: 10px;">INFORMATIONS</h3> 
+    
+    <div class="INFO">
+            <div></div>
+            <div>
+            <img src="images/Ate.jpg" alt="Profile Picture" width="80" style="margin-right: 10px;" >
+            </div>
+
+            <div>
+            <b><p>Dhessa Marie Amparo</p></b>
             <p><strong>Date: </strong><span class="date"></span></p>
             <p><strong>Time: </strong><span class="time"></span></p>
-            <div>
-                <strong>Cash Drawer Amount:</strong> <span>200,000</span>
+            <hr>
+                <span style="color: #b8860b"><strong>Cash Drawer Amount:</strong></span>
+               <b> <div style="background-color: #ffdb58; padding: 10px; color: #b8860b; border-radius: 10px; text-align: center;">200,000</div></b>
             </div>
         </div>
+
     </div>
     </div>
+    <br>
+    <div class="TABLE">
       <!-- Product Table / Items List -->
       <div class="product-table">
         <!-- A placeholder for your table of items -->
@@ -119,6 +131,7 @@
         <p>Grand Total:</p> 
         <p>1000.00 Pesos</p>
       </div>
+    </div>
 
       <div class="Bottom-tableContainer">
             <!-- Current Cash Drawer & Recommended Denomination -->

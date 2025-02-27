@@ -25,8 +25,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Roboto Slab', serif;;
+    font-family: 'Roboto Slab', serif;
   }
+
   body {
     font-family: Arial, sans-serif;
     background-color: #f8f8f8;
@@ -74,14 +75,33 @@
   
   /* ========== Left Section (POS) ========== */
   .pos-left {
-    flex: 0 0 60%; /* 60% width for the left side */
-    background-color: var(--card-border1-color);
-    padding: 20px;
+    display: flex;
+    background: #fffacd ;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 40px;
     border-radius: 10px;
-    /* Optional shadow */
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+
     
   }
+
+  .info-container
+  {
+    padding: 20px;
+    border-radius: 10px;
+    background-color:#fdfd96
+  }
+.INFO
+{
+ display: flex;
+  padding: 20px;
+  border-radius: 10px;
+  background-color:#fff8dc
+}
+
+
 
   h2{
     font-size: 1rem;
@@ -110,6 +130,18 @@
     display: flex;
   }
 
+  .TABLE 
+  {
+    padding: 20px;
+    border-radius: 10px;
+    background-color:#fdfd96
+  }
+
+  table, th, td {
+    text-align: center;
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
 
   /* ========== Right Section (Receipt) ========== */
   .pos-right {
@@ -307,4 +339,6 @@
   .mb-20 {
     margin-bottom: 20px;
   }
+
+
   
