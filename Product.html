@@ -16,10 +16,104 @@
 
   <!-- Top Navigation Bar -->
   <header class="topbar">
-   <a href=""> <div class="brand-name">Goldilocks-POS</div> </a>
+   <a href="#"> <div class="brand-name">Goldilocks-POS</div> </a>
     <nav class="nav-links">
       <a href="Index.html">Cashier</a>
       <a href="Product.html">Products</a>
       <a href="CashDrawer.html">Cash Drawer</a>
     </nav>
   </header>
+
+  <div class="container">
+    <h2 class="text-center mb-4">POS Product List</h2>
+    <div class="product-grid">
+        <!-- Product Items -->
+        <div class="product-card" onclick="addToCart( 'Choco Cherry Torte',600)">
+            <img src="images/1.jpg" alt="Choco Cherry Torte">
+            <p class="product-name">Choco Cherry Torte</p>
+            <p class="product-price">P600.00</p>
+        </div>
+        <div class="product-card" onclick="addToCart( 'Double Dutch',500)">
+            <img src="images/2.jpg" alt="Double Dutch">
+            <p class="product-name">Double Dutch</p>
+            <p class="product-price">P500.00</p>
+        </div>
+        <div class="product-card" onclick="addToCart( 'Choco Mousse',540)">
+            <img src="images/3.jpg" alt="Choco Mousse">
+            <p class="product-name">Choco Mousse</p>
+            <p class="product-price">P540.00</p>
+        </div>
+        <div class="product-card" onclick="addToCart( 'Black Forest',600)">
+            <img src="images/4.jpg" alt="Black Forest">
+            <p class="product-name">Black Forest</p>
+            <p class="product-price">P600.00</p>
+        </div>
+        <div class="product-card" onclick="addToCart( 'Royal Fudge Cake',600)">
+            <img src="images/5.jpg" alt="Royal Fudge Cake">
+            <p class="product-name">Royal Fudge Cake</p>
+            <p class="product-price">P600.00</p>
+        </div>
+        <div class="product-card" onclick="addToCart( 'Mocha Cake',348)">
+            <img src="images/6.png" alt="Mocha Cake">
+            <p class="product-name">Mocha Cake</p>
+            <p class="product-price">P348.00</p>
+        </div>
+        <div class="product-card" onclick="addToCart('Marble Cake',600)">
+            <img src="images/7.jpg" alt="Marble Cake">
+            <p class="product-name">Marble Cake</p>
+            <p class="product-price">P600.00</p>
+        </div>
+        <div class="product-card" onclick="addToCart('Luscious Caramel',516)">
+            <img src="images/8.jpg" alt="Luscious Caramel">
+            <p class="product-name">Luscious Caramel</p>
+            <p class="product-price">P516.00</p>
+        </div>
+        <div class="product-card" onclick="addToCart( 'Mocha Chiffon',548)">
+            <img src="images/9.jpg" alt="Mocha Chiffon">
+            <p class="product-name">Mocha Chiffon</p>
+            <p class="product-price">P548.00</p>
+        </div>
+        <div class="product-card" onclick="addToCart('Marble Chiffon',537)">
+            <img src="images/10.jpg" alt="Marble Chiffon">
+            <p class="product-name">Marble Chiffon</p>
+            <p class="product-price">P537.00</p>
+        </div>
+        <div class="product-card" onclick="addToCart( 'Choco Chiffon',548)">
+            <img src="images/11.jpg" alt="Choco Chiffon">
+            <p class="product-name">Choco Chiffon</p>
+            <p class="product-price">P548.00</p>
+        </div>
+        <div class="product-card" onclick="addToCart('Fruity Mocha', 611)">
+            <img src="images/12.jpg" alt="Fruity Mocha">
+            <p class="product-name">Fruity Mocha</p>
+            <p class="product-price">P611.00</p>
+        </div>
+    </div>
+</div>
+
+ <!-- Table for Selected Products -->
+ <div class="cart-container">
+  <h2> Products Table</Table></h2>
+  <table border-collapse ="collapse" width="100%" border="1">
+    <thead >
+      <tr>
+        
+        <th >Product Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody id="cart-body">
+      <!-- Selected items will be added here -->
+    </tbody>
+  </table>
+  <h3>Total: <span id="cart-total">0</span></h3>
+  <button onclick="checkout()">Check Out</button>
+</div>
+
+ <!-- JS CONNECTOR -->
+ <script src="POS.js"></script>
+
+</body>
+</html>

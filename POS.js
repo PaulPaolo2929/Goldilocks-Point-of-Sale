@@ -1,34 +1,109 @@
-// Receipnt Updater
-function updateReceipt() {
-    let customerName = document.getElementById("r-Customer")?.value || ""; // Ensure the element exists
-    let amountPaid = document.getElementById("AmountPaid").value; // Get input value correctly
 
-    // Update the display elements
-    document.getElementById("Customer-name").innerText = customerName;
-    document.getElementById("r-paid").innerText = amountPaid; // Use innerText to update display span
+
+let cart = [];
+
+// Add item to cart
+function addToCart(name, price) {
+    let existingItem = cart.find(item => item.name === name);
+    if (existingItem) {
+        existingItem.quantity++;
+    } else {
+        cart.push({ name, price, quantity: 1 });
+    }
+    updateCart();
 }
-// Date and TIME Update
+
+// Update Cart Table & Total
+function updateCart() {
+    let cartBody = document.getElementById("cart-body");
+    let total = 0;
+    cartBody.innerHTML = "";  // Clear previous entries
+
+    cart.forEach((item, index) => {
+        let itemTotal = item.price * item.quantity;
+        total += itemTotal;
+
+        let row = document.createElement("tr");
+        row.innerHTML =  `
+           
+                <td>${item.name}</td>
+                <td>P${item.price.toFixed(2)}</td>
+                <td>${item.quantity}</td>
+                <td>P${itemTotal.toFixed(2)}</td>
+                <td><button onclick="removeItem(${index})">Remove</button></td>
+           
+        `;
+        cartBody.appendChild(row);
+    });
+
+    document.getElementById("cart-total").textContent = `P ${total.toFixed(2)}`;
+
+}
+
+// Remove Item from Cart
+function removeItem(index) {
+    cart.splice(index, 1);
+    updateCart();
+}
+
+// Checkout Process - Updates Receipt and Alerts Total
+function checkout() {
+    
+    updateReceipt();  // Make sure receipt updates when clicking checkout
+
+    let totalAmount = document.getElementById("cart-total").textContent;
+    alert("Proceeding to checkout. Total: " + totalAmount);
+}
+
+// Receipt Updater
+function updateReceipt() {
+    let customerInput = document.getElementById("r-Customer");
+    let amountInput = document.getElementById("AmountPaid");
+
+    if (!customerInput || !amountInput) {
+        console.error("Error: One or more input fields not found!");
+        return;
+    }
+
+    let customerName = customerInput.value.trim();
+    let amountPaid = amountInput.value.trim();
+
+    let customerDisplay = document.getElementById("Customer-name");
+    let amountDisplay = document.getElementById("r-paid");
+
+    if (!customerDisplay || !amountDisplay) {
+        console.error("Error: One or more display elements not found!");
+        return;
+    }
+
+    customerDisplay.innerText = customerName || "N/A";
+    amountDisplay.innerText = "P" + (amountPaid || "0.00");
+}
+
+// Date and Time Updater
 function updateDateTime() {
     let currentDate = new Date();
 
-    // Formatting options
     let dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
     let timeOptions = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
 
-    // Select all elements with class "date" and update them
     document.querySelectorAll('.date').forEach(el => {
         el.innerHTML = currentDate.toLocaleDateString('en-US', dateOptions);
     });
 
-    // Select all elements with class "time" and update them
     document.querySelectorAll('.time').forEach(el => {
         el.innerHTML = currentDate.toLocaleTimeString('en-US', timeOptions);
     });
 }
 
-// Call the function once initially
+// Initialize Clock
 updateDateTime();
-
-// Update every second
 setInterval(updateDateTime, 1000);
 
+// Attach checkout function to button
+document.addEventListener("DOMContentLoaded", function () {
+    let checkoutButton = document.getElementById("checkout-btn");
+    if (checkoutButton) {
+        checkoutButton.addEventListener("click", checkout);
+    }
+});
