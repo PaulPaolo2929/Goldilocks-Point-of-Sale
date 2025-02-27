@@ -1,21 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>POS Layout Skeleton</title>
+  <link rel="stylesheet" href="styles.css" />
 
-    <link rel="stylesheet" href="CashDrawer.css">
+  <!-- Google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Slabo+27px&display=swap" rel="stylesheet">
+
 </head>
-<body >
-    header class="topbar">
-    <a href=""> <div class="brand-name">Brand Name</div> </a>
-     <nav class="nav-links">
-       <a href="Index.html">Cashier</a>
-       <a href="Product.html">Products</a>
-       <a href="CashDrawer.html">Cash Drawer</a>
-     </nav>
-   </header>
-    
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="topbar">
+   <a href=""> <div class="brand-name">Goldilocks-POS</div> </a>
+    <nav class="nav-links">
+      <a href="index.html">Cashier</a>
+      <a href="Product.html">Products</a>
+      <a href="CashDrawer.html">Cash Drawer</a>
+    </nav>
+  </header>
+
+      <!-- RIGHT SECTION: Receipt & Summary -->
+      <aside class="pos-right">
+
+        <!-- Store/Receipt Information -->
+        <div class="receipt-info">
+          <!-- e.g. Luxury Store Inc. / Address / Receipt No. / Date -->
+          <div id="receipt">
+      <!-- Fixed header section -->
+      <div class="receipt-header">
+          <p class="header">🍰 GOLDILOCKS POS</p>
+          <p class="header">📍 123 High Street, Laguna, Philippines</p>
+          <p class="header">📞 (123) 456-7890</p>
+          <hr>
+          <p><strong>Customer name:</strong> <span id="Customer-name"></span></p>
+          <p><strong>Receipt No:</strong> <span id="r-number">INV-12345</span></p>
+          <p><strong>Cashier:</strong> <span id="r-cashier">Dhessa Marie Amparo</span></p>
+          <p><strong>Date: </strong><span class="date"></span></p>
+          <p><strong>Time: </strong><span class="time"></span></p>
+          
+      </div>
+      
+      <!-- Scrollable items section -->
+      <div class="receipt-items-container">
+          <table class="items">
+              <tr>
+                  <th>Item</th>
+                  <th>Qty</th>
+                  <th>Price</th>
+                  <th>Total</th>
+              </tr>
+              <tr>
+                  <td id="r-item">Chocolate Cake</td>
+                  <td id="r-qty">2</td>
+                  <td id="r-price">₱350.00</td>
+                  <td id="r-total">₱700.00</td>
+              </tr>
+              <tr>
+                  <td>Ensaymada</td>
+                  <td>3</td>
+                  <td>₱45.00</td>
+                  <td>₱135.00</td>
+              </tr>
+              <!-- Example of multiple items to show scrolling -->
+              <tr><td>Mamon</td><td>4</td><td>₱35.00</td><td>₱140.00</td></tr>
+              <tr><td>Birthday Cake</td><td>1</td><td>₱650.00</td><td>₱650.00</td></tr>
+              <tr><td>Polvoron</td><td>10</td><td>₱12.00</td><td>₱120.00</td></tr>
+              <tr><td>Cheese Roll</td><td>5</td><td>₱25.00</td><td>₱125.00</td></tr>
+              <tr><td>Pandesal</td><td>12</td><td>₱5.00</td><td>₱60.00</td></tr>
+              <tr><td>Ube Cake Slice</td><td>2</td><td>₱85.00</td><td>₱170.00</td></tr>
+          </table>
+      </div>
+      
+      <!-- Fixed footer section -->
+      <div class="receipt-footer">
+          <p class="total"><strong>Grand Total:</strong> ₱<span id="r-grandTotal">2100.00</span></p>
+          <p class="details"><strong>Amount Paid:</strong> ₱<span id="r-paid">2500.00</span></p>
+          <p class="details"><strong>Change:</strong> ₱<span id="r-change">400.00</span></p>
+          <hr>
+          <p class="footer">🍰 Thank you for shopping with us!</p>
+          <button onclick="printReceipt()">Print Receipt</button>
+      </div>
+  </div>
+        </div>
+  
+        <!-- Receipt Details Table -->
+        <div class="receipt-table">
+          <!-- e.g. Items, Price, Tax, Discount, etc. -->
+        </div>
+  
+        <!-- Buttons (Clear Cart, Print Receipt, etc.) -->
+        <div class="receipt-buttons">
+          <!-- e.g. CLEAR CART / PRINT RECEIPT -->
+           <!-- Buttons (Clear Cart, Print Receipt, etc.) -->
+          <div class="receipt-buttons">
+              <button class="clear-cart-btn">
+                  CLEAR CART
+              </button>
+              <button class="print-receipt-btn">
+                  PRINT RECEIPT
+              </button>
+          </div>
+        </div>
+   <!-- Summary & Checkout -->
+   <div class="summary-checkout">
+    <!-- e.g. Total Amount, Change, CHECK OUT button -->
+    <!-- Summary & Checkout -->
+    <div class="summary-container">
+        <h3>SUMMARY</h3>
+        <p><strong>Total Amount:</strong> <span>₱12034.99</span></p>
+        <p><strong>Amount Paid:</strong> <input type="text" placeholder="Enter amount" id="AmountPaid" oninput="updateReceipt()"></p>
+        <button class="calculate-btn">
+            Calculate
+        </button>
+        <p><strong>Change:</strong> <span>657</span></p>
+        <button class="checkout-btn">
+            CHECKOUT
+        </button>
+    </div>
+  </div>
+
+</aside>
+</main>
+
+ <!-- JS CONNECTOR -->
+ <script src="POS.js"></script>
+
 </body>
 </html>
