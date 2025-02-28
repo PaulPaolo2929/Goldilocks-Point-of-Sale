@@ -44,10 +44,16 @@ function removeItem(index) {
     updateCart();
 }
 
+// ================================================================
 // Checkout Process - Updates Receipt and Alerts Total
 function checkout() {
     updateReceipt();  // Make sure receipt updates when clicking checkout
 
     let totalAmount = document.getElementById("cart-total").textContent;
     alert("Proceeding to checkout. Total: " + totalAmount);
+}
+
+function checkout() {
+    localStorage.setItem("cart", JSON.stringify(cart));  // Save cart data
+    window.location.href = "index.html"; // Redirect to POS page
 }
