@@ -1,13 +1,78 @@
+document.addEventListener("DOMContentLoaded", function () {
+    // Elements for Receipt Number Generation
+    const prefix = "RCPT"; // Receipt prefix
+    const generateBtn = document.getElementById("generate-btn");
+    const receiptInput = document.getElementById("receiptNumber");
+    const receiptDisplay = document.getElementById("receipt-number");
 
-// Receipnt Updater
-function updateReceipt() {
-    let customerName = document.getElementById("r-Customer")?.value || ""; // Ensure the element exists
-    let amountPaid = document.getElementById("AmountPaid").value; // Get input value correctly
+    // Customer Name & Amount Elements
+    const customerInput = document.getElementById("r-Customer");
+    const receiptCustomerName = document.getElementById("customerName");
+    const amountPaidInput = document.getElementById("AmountPaid");
+    const amountPaidDisplay = document.getElementById("r-paid");
 
-    // Update the display elements
-    document.getElementById("Customer-name").innerText = customerName;
-    document.getElementById("r-paid").innerText = amountPaid; // Use innerText to update display span
-}
+
+    function generateReceiptNumber() {
+        return `${prefix}-${Math.floor(100000 + Math.random() * 900000)}`;
+    }
+
+    function assignReceiptNumber() {
+        const newReceiptNo = generateReceiptNumber();
+        if (receiptInput) receiptInput.value = newReceiptNo;
+        if (receiptDisplay) receiptDisplay.innerText = newReceiptNo;
+    }
+
+    // Update Customer Name on Receipt
+    function updateCustomerName() {
+        receiptCustomerName.innerText = customerInput.value.trim() || "N/A";
+    }
+
+    // Update Amount Paid on Receipt
+    function updateAmountPaid() {
+        amountPaidDisplay.innerText = amountPaidInput.value || "0";
+    }
+
+    // Attach Event Listeners
+    if (generateBtn) generateBtn.addEventListener("click", assignReceiptNumber);
+    customerInput.addEventListener("input", updateCustomerName);
+    amountPaidInput.addEventListener("input", updateAmountPaid);
+
+    //retrieve cart content from product tab
+    let cart = JSON.parse(localStorage.getItem("cart")) || []; // Get stored cart data
+
+    let receiptTable = document.querySelector(".items"); // Target receipt table
+    let grandTotalElement = document.getElementById("r-grandTotal");
+    let grandTotal = 0;
+
+    cart.forEach(item => {
+        let row = document.createElement("tr");
+
+        let itemTotal = item.price * item.quantity;
+        grandTotal += itemTotal;
+
+        row.innerHTML = `
+            <td>${item.name}</td>
+            <td>${item.quantity}</td>
+            <td>P${item.price.toFixed(2)}</td>
+            <td>P${itemTotal.toFixed(2)}</td>
+        `;
+        
+        receiptTable.appendChild(row);
+    });
+
+    // Update Grand Total
+    grandTotalElement.textContent = `₱${grandTotal.toFixed(2)}`;
+
+    // Get Paid Amount & Calculate Change
+    document.getElementById("AmountPaid").addEventListener("input", function () {
+        let paidAmount = parseFloat(this.value) || 0;
+        let change = paidAmount - grandTotal;
+
+        document.getElementById("r-change").textContent = `₱${change.toFixed(2)}`;
+    });   
+        
+});
+
 // Date and TIME Update
 function updateDateTime() {
     let currentDate = new Date();
@@ -105,8 +170,5 @@ function cashDrawerRandomizer() {
     document.getElementById("manualInputBtn").addEventListener("click", openManualPanel);
     document.getElementById("submitManual").addEventListener("click", handleManualSubmit);
     document.getElementById("closePanel").addEventListener("click", closeManualPanel);
+   
 }
-
-// Initialize the functionality
-cashDrawerRandomizer();
-

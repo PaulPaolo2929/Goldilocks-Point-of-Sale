@@ -49,10 +49,15 @@
       <!-- Customer Info & Product Code -->
       <div class="customer-info">
         <!-- Add your inputs/labels here -->
+        
+        <p> 
+            <button id="generate-btn">Generate Receipt No:</button>
+            <input type="text" id="receiptNumber" readonly> 
+        </p>
         <p>Customer Name: <br>
-            <input type="text" id="r-Customer" oninput="updateReceipt()"> </p>
-         <p>Reciept No:  <br>
-            <input type="text" name="" id="Product-Code"> </p>
+            <input type="text" id="r-Customer" oninput="updateCustomerName()"> </p>
+       
+           
          <!-- e.g. Customer Name, Product Code fields -->
       </div>
     </div>
@@ -83,92 +88,25 @@
     </div>
     </div>
     <br>
-    <div class="TABLE">
-      <!-- Product Table / Items List -->
-      <div class="product-table">
-        <!-- A placeholder for your table of items -->
-        <table>
-            <thead>
-                <tr>
-                    <th>  </th>
-                    <th>Quantity</th>
-                    <th>Unit</th>
-                    <th>Product</th>
-                    <th>Unit Price</th>
-                    <th>Total</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><button>❌</button></td>
-                    <td><input type="number" value="3" min="1"></td>
-                    <td>Pcs</td>
-                    <td>Product 1012</td>
-                    <td>284.99</td>
-                    <td>1057.89</td>
-                </tr>
-                <tr>
-                    <td><button>❌</button></td>
-                    <td><input type="number" value="5" min="1"></td>
-                    <td>Pcs</td>
-                    <td>Product 1013</td>
-                    <td>467.99</td>
-                    <td>3555.89</td>
-                </tr>
-                <tr>
-                    <td><button>❌</button></td>
-                    <td><input type="number" value="3" min="1"></td>
-                    <td>Pcs</td>
-                    <td>Product 1014</td>
-                    <td>1345.99</td>
-                    <td>3254.89</td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="4"><strong>Grand Total:</strong></td>
-                    <td><strong>7493.99</strong></td>
-                    <td></td>
-                </tr>
-            </tfoot>
-        </table>
-      </div>
-
-      <!-- Grand Total Display -->
-      <div class="grand-total">
-        <!-- e.g. Grand Total: ₱xxx -->
-        <p>Grand Total:</p> 
-        <p>1000.00 Pesos</p>
-      </div>
+    
+        
+               
+                
+                 <!-- Summary & Checkout -->
+   <div class="summary-checkout">
+    <!-- e.g. Total Amount, Change, CHECK OUT button -->
+    <!-- Summary & Checkout -->
+    <div class="summary-container">
+        <h3>SUMMARY</h3>
+        <p><strong>Total Amount:</strong><span id="cart-total">0</span></p>
+        <p><strong>Amount Paid:</strong> <input type="text" placeholder="Enter amount" id="AmountPaid" oninput="updateReceipt()">
+        <button class="calculate-btn">
+            Calculate
+        </button> </p>
+        <p><strong>Change:</strong> <span>657</span></p>
+       
     </div>
-
-      <div class="Bottom-tableContainer">
-            <!-- Current Cash Drawer & Recommended Denomination -->
-            <div class="cash-drawer-container">
-                <h3>Current Cash Drawer</h3>
-               <!--  -->
-        
-                <!-- Manual Input Form -->
-                <div id="manualPanel" class="panel hidden">
-                    <h4>Enter Breakdown</h4>
-                    <div id="manualInputs"></div>
-                    <button id="submitManual">Submit Breakdown</button>
-                    <button id="closePanel">Close</button>
-                </div>
-        
-                <table border="1">
-                    <thead>
-                        <tr>
-                            <th>Bills</th>
-                            <th>No. of Bills</th>
-                            <th>Amount</th>
-                        </tr>
-                    </thead>
-                    <tbody id="cashDrawerBody">
-                        <!-- Breakdown will be inserted here -->
-                    </tbody>
-                </table>
-            </div>
+  </div>
             
             <div class="drawer-recommendation">
                 <!-- e.g. Current Cash Drawer, Denominations, etc. -->
@@ -204,12 +142,13 @@
                             </tr>
                         </tbody>
                     </table>
-                    <p>Change: 757</p>
+                   
                 </div>
             </div>
     </div>
 
     </section>
+    
 
       <!-- RIGHT SECTION: Receipt & Summary -->
       <aside class="pos-right">
@@ -224,8 +163,8 @@
           <p class="header">📍 123 High Street, Laguna, Philippines</p>
           <p class="header">📞 (123) 456-7890</p>
           <hr>
-          <p><strong>Customer name:</strong> <span id="Customer-name"></span></p>
-          <p><strong>Receipt No:</strong> <span id="r-number">INV-12345</span></p>
+          <p><strong>Customer Name: </strong><span id="customerName"></span> </p>
+          <p><strong>Receipt No:</strong><span id="receipt-number"></span>  </p>
           <p><strong>Cashier:</strong> <span id="r-cashier">Dhessa Marie Amparo</span></p>
           <p><strong>Date: </strong><span class="date"></span></p>
           <p><strong>Time: </strong><span class="time"></span></p>
@@ -236,38 +175,19 @@
       <div class="receipt-items-container">
           <table class="items">
               <tr>
-                  <th>Item</th>
+                  <th>Product Name</th>
                   <th>Qty</th>
                   <th>Price</th>
                   <th>Total</th>
               </tr>
-              <tr>
-                  <td id="r-item">Chocolate Cake</td>
-                  <td id="r-qty">2</td>
-                  <td id="r-price">₱350.00</td>
-                  <td id="r-total">₱700.00</td>
-              </tr>
-              <tr>
-                  <td>Ensaymada</td>
-                  <td>3</td>
-                  <td>₱45.00</td>
-                  <td>₱135.00</td>
-              </tr>
-              <!-- Example of multiple items to show scrolling -->
-              <tr><td>Mamon</td><td>4</td><td>₱35.00</td><td>₱140.00</td></tr>
-              <tr><td>Birthday Cake</td><td>1</td><td>₱650.00</td><td>₱650.00</td></tr>
-              <tr><td>Polvoron</td><td>10</td><td>₱12.00</td><td>₱120.00</td></tr>
-              <tr><td>Cheese Roll</td><td>5</td><td>₱25.00</td><td>₱125.00</td></tr>
-              <tr><td>Pandesal</td><td>12</td><td>₱5.00</td><td>₱60.00</td></tr>
-              <tr><td>Ube Cake Slice</td><td>2</td><td>₱85.00</td><td>₱170.00</td></tr>
           </table>
       </div>
       
       <!-- Fixed footer section -->
       <div class="receipt-footer">
           <p class="total"><strong>Grand Total:</strong> ₱<span id="r-grandTotal">2100.00</span></p>
-          <p class="details"><strong>Amount Paid:</strong> ₱<span id="r-paid">2500.00</span></p>
-          <p class="details"><strong>Change:</strong> ₱<span id="r-change">400.00</span></p>
+          <p class="details"><strong>Amount Paid:</strong> ₱<span id="r-paid">0.00</span></p>
+          <p class="details"><strong>Change:</strong> ₱<span id="r-change">0.00</span></p>
           <hr>
           <p class="footer">🍰 Thank you for shopping with us!</p>
           <button onclick="printReceipt()">Print Receipt</button>
@@ -280,36 +200,8 @@
           <!-- e.g. Items, Price, Tax, Discount, etc. -->
         </div>
   
-        <!-- Buttons (Clear Cart, Print Receipt, etc.) -->
-        <div class="receipt-buttons">
-          <!-- e.g. CLEAR CART / PRINT RECEIPT -->
-           <!-- Buttons (Clear Cart, Print Receipt, etc.) -->
-          <div class="receipt-buttons">
-              <button class="clear-cart-btn">
-                  CLEAR CART
-              </button>
-              <button class="print-receipt-btn">
-                  PRINT RECEIPT
-              </button>
-          </div>
-        </div>
-   <!-- Summary & Checkout -->
-   <div class="summary-checkout">
-    <!-- e.g. Total Amount, Change, CHECK OUT button -->
-    <!-- Summary & Checkout -->
-    <div class="summary-container">
-        <h3>SUMMARY</h3>
-        <p><strong>Total Amount:</strong> <span>₱12034.99</span></p>
-        <p><strong>Amount Paid:</strong> <input type="text" placeholder="Enter amount" id="AmountPaid" oninput="updateReceipt()"></p>
-        <button class="calculate-btn">
-            Calculate
-        </button>
-        <p><strong>Change:</strong> <span>657</span></p>
-        <button class="checkout-btn">
-            CHECKOUT
-        </button>
-    </div>
-  </div>
+       
+  
 
 </aside>
 </main>
