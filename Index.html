@@ -50,9 +50,11 @@
       <div class="customer-info">
         <!-- Add your inputs/labels here -->
         <p>Customer Name: <br>
-            <input type="text" id="r-Customer" oninput="updateReceipt()"> </p>
-         <p>Reciept No:  <br>
-            <input type="text" name="" id="Product-Code"> </p>
+            <input type="text" id="r-Customer" oninput="updateReceipt1()"> </p>
+            <p>Receipt No: <br>
+                <input type="text" id="Product-Code" readonly>
+                <button onclick="generateReceiptNumber()">Gen Receipt No</button>
+            </p>
          <!-- e.g. Customer Name, Product Code fields -->
       </div>
     </div>
@@ -175,7 +177,7 @@
           <p class="header">📞 (123) 456-7890</p>
           <hr>
           <p><strong>Customer name:</strong> <span id="Customer-name"></span></p>
-          <p><strong>Receipt No:</strong> <span id="r-number">INV-12345</span></p>
+          <p><strong>Receipt No:</strong> <span id="r-number"></span></p>
           <p><strong>Cashier:</strong> <span id="r-cashier">Dhessa Marie Amparo</span></p>
           <p><strong>Date: </strong><span class="date"></span></p>
           <p><strong>Time: </strong><span class="time"></span></p>
@@ -201,9 +203,9 @@
       
       <!-- Fixed footer section -->
       <div class="receipt-footer">
-          <p class="total"><strong>Grand Total:</strong> ₱<span class="grand-total-amount">2100.00</span></p>
-          <p class="details"><strong>Amount Paid:</strong> ₱<span id="r-paid">2500.00</span></p>
-          <p class="details"><strong>Change:</strong> ₱<span id="r-change">400.00</span></p>
+          <p class="total"><strong>Grand Total:</strong> ₱<span class="grand-total-amount">0.00</span></p>
+          <p class="details"><strong>Amount Paid:</strong> ₱<span id="r-paid">0.00</span></p>
+          <p class="details"><strong>Change:</strong> ₱<span id="r-change">0.00</span></p>
           <hr>
           <p class="footer">🍰 Thank you for shopping with us!</p>
           <button onclick="printReceipt()">Print Receipt</button>
@@ -236,9 +238,9 @@
     <div class="summary-container">
         <h3>SUMMARY</h3>
         <p><strong>Amount Paid:</strong> 
-            <input type="number" placeholder="Enter amount" id="AmountPaid">
+            <input type="number" placeholder="Enter amount" id="AmountPaid" oninput="updateReceipt()">
         </p>
-        <p><strong>Total Amount: </strong> ₱<span class="grand-total-amount">0</span></p>
+        <p><strong>Total Amount: </strong> <span class="grand-total-amount">0</span></p>
         <button class="calculate-btn" onclick="calculateChange()">Calculate</button>
         <p><strong>Change:</strong> <span id="changeAmount">₱0.00</span></p>     
         <button class="checkout-btn">
