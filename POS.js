@@ -317,5 +317,9 @@ const getChangeBreakdown = (change) =>
         updateReceipt1(); // ✅ Update receipt details when new number is generated
     }
     
-    
+// =================Printing Receipt===============
+function printReceipt() {
+    window.print();
+}
+
 

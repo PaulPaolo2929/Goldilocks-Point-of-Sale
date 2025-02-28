@@ -1,160 +1,154 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap");
 
 :root {
-    --primary-color: #FFC72C; /* Vibrant Yellow - Used for headers and highlights */
-    --secondary-color: #D9A300; /* Deep Gold - Used for borders and accents */
-    --background-color: #FFF7E6; /* Light Beige - General background */
-    --text-color: #4A2800; /* Dark Brown - Text for contrast */
-    --table-header-color: #FFD700; /* Bright Gold - Table headers */
-    --table-border-color: #B8860B; /* Dark Gold - Borders of tables */
-    --button-danger: #E63946; /* Red - Clear Cart button */
-    --button-primary: #3B82F6; /* Blue - Print Receipt button */
-    --button-success: #28A745; /* Green - Checkout button */
-    --input-border-color: #C4C4C4; /* Light Gray - Input borders */
-    --card-border-color: #E6C200; /* Golden Yellow - Receipt and info section border */
-    --card-border1-color: #fff4b4;
+  --primary-color: #ffc72c; /* Vibrant Yellow - Used for headers and highlights */
+  --secondary-color: #d9a300; /* Deep Gold - Used for borders and accents */
+  --background-color: #fff7e6; /* Light Beige - General background */
+  --text-color: #4a2800; /* Dark Brown - Text for contrast */
+  --table-header-color: #ffd700; /* Bright Gold - Table headers */
+  --table-border-color: #b8860b; /* Dark Gold - Borders of tables */
+  --button-danger: #e63946; /* Red - Clear Cart button */
+  --button-primary: #3b82f6; /* Blue - Print Receipt button */
+  --button-success: #28a745; /* Green - Checkout button */
+  --input-border-color: #c4c4c4; /* Light Gray - Input borders */
+  --card-border-color: #e6c200; /* Golden Yellow - Receipt and info section border */
+  --card-border1-color: #fff4b4;
 }
 
-.UpperParent-cont{
-
-    display: flex;
+.UpperParent-cont {
+  display: flex;
 }
 
 /* ========== Global Reset & Base Styles ========== */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto Slab', serif;
-  }
-
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f8f8;
-    padding: 0px 0px ;
-  }
-  a {
-    text-decoration: none;
-    color: #000;
-  }
-  
-  /* ========== Top Bar ========== */
-  .topbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--primary-color); /* Example color, adjust as needed */
-    padding: 10px 20px;
-    border-radius: 0px;
-    margin-bottom: 20px;
-    margin-top: 0px;
-  }
-  .brand-name {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: var(--text-color);
-  }
-  .nav-links a {
-    margin-left: 20px;
-    font-weight: 600;
-    color: var(--text-color);
-  }
-
-  .nav-links a:hover{
-    color: var(--background-color);
-  }
-  
-  /* ========== Main Container ========== */
-  .main-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px; /* Space between left & right sections */
-    padding: 0px 20px;
-    height: 86vh;
-  }
-  
-  /* ========== Left Section (POS) ========== */
-  .pos-left {
-    display: flex;
-    background: #fffacd ;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: inline-block;
-
-    
-  }
-
-  .info-container
-  {
-    padding: 20px;
-    border-radius: 10px;
-    background-color:#fdfd96
-  }
-.INFO
-{
- display: flex;
-  padding: 20px;
-  border-radius: 10px;
-  background-color:#fff8dc
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto Slab", serif;
 }
 
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f8f8;
+  padding: 0px 0px;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
 
+/* ========== Top Bar ========== */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--primary-color); /* Example color, adjust as needed */
+  padding: 10px 20px;
+  border-radius: 0px;
+  margin-bottom: 20px;
+  margin-top: 0px;
+}
+.brand-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--text-color);
+}
+.nav-links a {
+  margin-left: 20px;
+  font-weight: 600;
+  color: var(--text-color);
+}
 
-  h2{
-    font-size: 1rem;
-  }
-  
-  /* Sub-sections in the Left Panel */
-  .pos-header {
-    margin-bottom: 20px;
-  }
-  .customer-info {
-    margin-bottom: 20px;
-  }
-  
-  .product-table {
-    margin-bottom: 20px;
-  }
-  .grand-total {
-    margin-bottom: 20px;
-  }
-  .drawer-recommendation {
-    margin-bottom: 20px;
-  }
-  
-  /* The table Left container */
-  .Bottom-tableContainer{
-    display: flex;
-  }
+.nav-links a:hover {
+  color: var(--background-color);
+}
 
-  .TABLE 
-  {
-    padding: 20px;
-    border-radius: 10px;
-    background-color:#fdfd96
-  }
+/* ========== Main Container ========== */
+.main-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; /* Space between left & right sections */
+  padding: 0px 20px;
+  height: 86vh;
+}
 
-  table, th, td {
-    text-align: center;
-    border: 1px solid black;
-    border-collapse: collapse;
-  }
+/* ========== Left Section (POS) ========== */
+.pos-left {
+  display: flex;
+  background: #fffacd;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+}
 
-  /* ========== Right Section (Receipt) ========== */
-  .pos-right {
-    flex: 0 0 35%; /* 20% width for the right side */
-    background-color: #fff;
-    padding: 10px ;
-    border-radius: 10px;
-    /* Optional shadow */
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-   
-    /* =================== Receipt Styling ================*/
-    /* Receipt Styling */
-#receipt {
+.info-container {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fdfd96;
+}
+.INFO {
+  display: flex;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fff8dc;
+}
+
+h2 {
+  font-size: 1rem;
+}
+
+/* Sub-sections in the Left Panel */
+.pos-header {
+  margin-bottom: 20px;
+}
+.customer-info {
+  margin-bottom: 20px;
+}
+
+.product-table {
+  margin-bottom: 20px;
+}
+.grand-total {
+  margin-bottom: 20px;
+}
+.drawer-recommendation {
+  margin-bottom: 20px;
+}
+
+/* The table Left container */
+.Bottom-tableContainer {
+  display: flex;
+}
+
+.TABLE {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fdfd96;
+}
+
+table,
+th,
+td {
+  text-align: center;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+/* ========== Right Section (Receipt) ========== */
+.pos-right {
+  flex: 0 0 35%; /* 20% width for the right side */
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  /* Optional shadow */
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+
+  /* =================== Receipt Styling ================*/
+  /* Receipt Styling */
+  #receipt {
     width: 300px;
     height: 500px; /* Fixed height for the receipt */
     padding: 20px;
@@ -166,86 +160,86 @@
     margin: 20px auto;
     display: flex;
     flex-direction: column;
-}
+  }
 
-/* Header section - stays fixed */
-.receipt-header {
+  /* Header section - stays fixed */
+  .receipt-header {
     flex-shrink: 0; /* Prevents the header from shrinking */
-}
+  }
 
-/* Scrollable items section */
-.receipt-items-container {
+  /* Scrollable items section */
+  .receipt-items-container {
     flex: 1; /* Takes available space */
     overflow-y: auto; /* Makes this section scrollable */
     margin: 10px 0;
     border-top: 1px dashed #000;
     border-bottom: 1px dashed #000;
     padding: 10px 0;
-}
+  }
 
-/* Footer section - stays fixed */
-.receipt-footer {
+  /* Footer section - stays fixed */
+  .receipt-footer {
     flex-shrink: 0; /* Prevents the footer from shrinking */
-}
+  }
 
-#receipt .header {
+  #receipt .header {
     text-align: center;
     margin: 0;
     padding: 3px;
     font-weight: bold;
-}
+  }
 
-#receipt hr {
+  #receipt hr {
     border: none;
     border-top: 1px dashed #000;
     margin: 10px 0;
-}
+  }
 
-#receipt p {
+  #receipt p {
     margin: 5px 0;
     color: #000;
     border: none;
     float: none;
     font-size: 12px;
     padding: 2px;
-}
+  }
 
-#receipt .items {
+  #receipt .items {
     width: 100%;
     border-collapse: collapse;
-}
+  }
 
-#receipt .items th, 
-#receipt .items td {
+  #receipt .items th,
+  #receipt .items td {
     border: 1px solid #ddd;
     padding: 5px;
     text-align: left;
     font-size: 11px;
-}
+  }
 
-#receipt .items th {
+  #receipt .items th {
     background-color: #f2f2f2;
     position: sticky;
     top: 0; /* Keeps the header visible when scrolling */
     z-index: 1;
-}
+  }
 
-#receipt .total {
+  #receipt .total {
     font-weight: bold;
     font-size: 14px;
-}
+  }
 
-#receipt .details {
+  #receipt .details {
     font-size: 12px;
-}
+  }
 
-#receipt .footer {
+  #receipt .footer {
     text-align: center;
     font-weight: bold;
     margin-top: 10px;
-}
+  }
 
-#receipt button {
+  #receipt button {
     height: 30px;
     width: 100%;
     background-color: #106d96;
@@ -255,90 +249,158 @@
     font-size: 14px;
     cursor: pointer;
     border-radius: 4px;
-}
+  }
 
-#receipt button:hover {
+  #receipt button:hover {
     background-color: #fff;
     color: #106d96;
-}
+  }
 
-/* Adding a subtle Goldilocks brand color */
-#r-cashier {
+  /* Adding a subtle Goldilocks brand color */
+  #r-cashier {
     color: #e6a932;
     font-weight: bold;
-}
+  }
 
-/* Additional styling for the price values */
-#r-grandTotal, #r-paid, #r-change {
+  /* Additional styling for the price values */
+  #r-grandTotal,
+  #r-paid,
+  #r-change {
     font-weight: bold;
-}
+  }
 
-#r-change {
+  #r-change {
     color: #2a8000;
-}
+  }
 
-/* Custom scrollbar styling for better aesthetics */
-.receipt-items-container::-webkit-scrollbar {
+  /* Custom scrollbar styling for better aesthetics */
+  .receipt-items-container::-webkit-scrollbar {
     width: 6px;
-}
+  }
 
-.receipt-items-container::-webkit-scrollbar-track {
+  .receipt-items-container::-webkit-scrollbar-track {
     background: #f1f1f1;
-}
+  }
 
-.receipt-items-container::-webkit-scrollbar-thumb {
+  .receipt-items-container::-webkit-scrollbar-thumb {
     background: #888;
     border-radius: 3px;
-}
+  }
 
-.receipt-items-container::-webkit-scrollbar-thumb:hover {
+  .receipt-items-container::-webkit-scrollbar-thumb:hover {
     background: #555;
+  }
+
+  /* Adding a subtle Goldilocks brand color */
+  #r-cashier {
+    color: #e6a932;
+    font-weight: bold;
+  }
+
+  /* Additional styling for the price values */
+  #r-grandTotal,
+  #r-paid,
+  #r-change {
+    font-weight: bold;
+  }
+
+  #r-change {
+    color: #2a8000;
+  }
 }
-    
-    /* Adding a subtle Goldilocks brand color */
-    #r-cashier {
-        color: #e6a932;
-        font-weight: bold;
-    }
-    
-    /* Additional styling for the price values */
-    #r-grandTotal, #r-paid, #r-change {
-        font-weight: bold;
-    }
-    
-    #r-change {
-        color: #2a8000;
-    }
 
+/* Sub-sections in the Right Panel */
+.receipt-info {
+  margin-bottom: 20px;
+}
+.receipt-table {
+  margin-bottom: 20px;
+}
+.receipt-buttons {
+  margin-bottom: 20px;
+}
+.summary-checkout {
+  margin-bottom: 20px;
+}
+
+/* ========== Utility Classes (Optional) ========== */
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+.text-left {
+  text-align: left;
+}
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+@media print {
+  body * {
+      visibility: hidden; /* Hide everything except the receipt */
   }
   
-  /* Sub-sections in the Right Panel */
-  .receipt-info {
-    margin-bottom: 20px;
-  }
-  .receipt-table {
-    margin-bottom: 20px;
-  }
-  .receipt-buttons {
-    margin-bottom: 20px;
-  }
-  .summary-checkout {
-    margin-bottom: 20px;
-  }
-  
-  /* ========== Utility Classes (Optional) ========== */
-  .text-center {
-    text-align: center;
-  }
-  .text-right {
-    text-align: right;
-  }
-  .text-left {
-    text-align: left;
-  }
-  .mb-20 {
-    margin-bottom: 20px;
+  #receipt, #receipt * {
+      visibility: visible; /* Show only the receipt */
   }
 
+  #receipt {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100mm; /* Keep a fixed width */
+      background-color: white;
+      padding: 15px;
+      font-family: 'Arial', sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      height: auto !important; /* ✅ AUTO-ADJUST HEIGHT */
+      min-height: 100mm; /* Ensures it's not too small */
+  }
 
-  
+  .receipt-items-container {
+      overflow: visible !important;
+      height: auto !important; /* ✅ EXPANDS WITH CONTENT */
+  }
+
+  /* Header and Footer - Keep Centered */
+  .receipt-header,
+  .receipt-footer {
+      text-align: center;
+      font-weight: bold;
+      font-size: 18px;
+  }
+
+  /* Customer details - Left Aligned */
+  .receipt-header p {
+      text-align: left;
+      font-size: 16px;
+      font-weight: normal;
+      margin: 5px 0;
+  }
+
+  .items th, .items td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      font-size: 16px;
+      text-align: left;
+  }
+
+  .total, .details {
+      font-weight: bold;
+      font-size: 18px;
+      margin-top: 15px;
+      text-align: left;
+  }
+
+  .footer {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 20px;
+      font-size: 18px;
+  }
+}
+
+
