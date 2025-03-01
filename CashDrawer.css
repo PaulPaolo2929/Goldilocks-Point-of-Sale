@@ -58,3 +58,7 @@
   .nav-links a:hover{
     color: var(--background-color);
   }
+
+  div {
+    font-family: Lucida Handwriting;
+  }

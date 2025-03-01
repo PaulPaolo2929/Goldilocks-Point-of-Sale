@@ -21,7 +21,7 @@
 
   <!-- Top Navigation Bar -->
   <header class="topbar">
-   <a href=""> <div class="brand-name">Goldilocks-POS</div> </a>
+   <a href=""> <div class="brand-name">SWEET ELEGANCE</div> </a>
     <nav class="nav-links">
       <a href="index.html">Cashier</a>
       <a href="Product.html">Products</a>
@@ -64,18 +64,22 @@
     
     <div class="INFO">
             <div></div>
-            <div>
-            <img src="images/Ate.jpg" alt="Profile Picture" width="80" style="margin-right: 10px;" >
-            </div>
+            <p>
+            <img src="images/Ate.jpg" alt="Profile Picture" width="80" style="margin-right: 10px;" ><br><br><br>
+           
+
+            </p>
 
             <div>
             <b><p>Dhessa Marie Amparo</p></b>
             <p><strong>Date: </strong><span class="date"></span></p>
             <p><strong>Time: </strong><span class="time"></span></p>
+            
             <hr>
                 <span style="color: #b8860b"><strong>Cash Drawer Amount:</strong></span>
                 <div><br>
-                    <b><div id="cashTotal" style="background-color: #ffdb58; padding: 7px; color: #b8860b; border-radius: 10px; text-align: center;">0</div></b>
+                    <b><div id="cashTotal" style="background-color: #ffdb58; padding: 10px; color: #b8860b; border-radius: 5px; text-align: center;">0</div></b>
+                    
                 </div>
                 </div>
             </div>
@@ -201,8 +205,9 @@
           <p class="details"><strong>Amount Paid:</strong> ₱<span id="r-paid">0.00</span></p>
           <p class="details"><strong>Change:</strong> ₱<span id="r-change">0.00</span></p>
           <hr>
+          <br>
           <p class="footer">🍰 Thank you for shopping with us!</p>
-          <button onclick="printReceipt()">Print Receipt</button>
+          
       </div>
   </div>
         </div>
@@ -217,12 +222,8 @@
           <!-- e.g. CLEAR CART / PRINT RECEIPT -->
            <!-- Buttons (Clear Cart, Print Receipt, etc.) -->
           <div class="receipt-buttons">
-              <button class="clear-cart-btn">
-                  CLEAR CART
-              </button>
-              <button class="print-receipt-btn">
-                  PRINT RECEIPT
-              </button>
+              
+              
           </div>
         </div>
    <!-- Summary & Checkout -->
@@ -231,15 +232,14 @@
     <!-- Summary & Checkout -->
     <div class="summary-container">
         <h3>SUMMARY</h3>
+        <p><strong>Total Amount: </strong> <span class="grand-total-amount">0</span></p>
         <p><strong>Amount Paid:</strong> 
             <input type="number" placeholder="Enter amount" id="AmountPaid" oninput="updateReceipt()">
-        </p>
-        <p><strong>Total Amount: </strong> <span class="grand-total-amount">0</span></p>
-        <button class="calculate-btn" onclick="calculateChange()">Calculate</button>
+        
+        
+        <button class="calculate-btn" onclick="calculateChange()">Calculate</button> </p>
         <p><strong>Change:</strong> <span id="changeAmount">₱0.00</span></p>     
-        <button class="checkout-btn">
-            CHECKOUT
-        </button>
+        <button id="checkOut-btn">Check Out</button>
     </div>
   </div>
 
