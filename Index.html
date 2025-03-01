@@ -75,9 +75,8 @@
             <hr>
                 <span style="color: #b8860b"><strong>Cash Drawer Amount:</strong></span>
                 <div><br>
-                    <input type="number" id="totalAmount" placeholder="Enter Total Amount">
-                    <button id="generateAuto">Generate Auto</button>
-                    <button id="manualInputBtn">Manual Input</button>  
+                    <b><div id="cashTotal" style="background-color: #ffdb58; padding: 7px; color: #b8860b; border-radius: 10px; text-align: center;">0</div></b>
+                </div>
                 </div>
             </div>
         </div>
@@ -116,32 +115,27 @@
     
     </div>
 
-      <div class="Bottom-tableContainer">
+      <div class="Bottom-tableContainer" style="display: flex;">
             <!-- Current Cash Drawer & Recommended Denomination -->
             <div class="cash-drawer-container" style="padding: 0px 20px;">
                 <h3>Current Cash Drawer</h3>
                <!--  -->
         
-                <!-- Manual Input Form -->
-                <div id="manualPanel" class="panel hidden">
-                    <h4>Enter Breakdown</h4>
-                    <div id="manualInputs"></div>
-                    <button id="submitManual">Submit Breakdown</button>
-                    <button id="closePanel">Close</button>
-                </div>
-        
-                <table border="1">
-                    <thead>
-                        <tr>
-                            <th>Bills</th>
-                            <th>No. of Bills</th>
-                            <th>Amount</th>
-                        </tr>
-                    </thead>
-                    <tbody id="cashDrawerBody">
-                        <!-- Breakdown will be inserted here -->
-                    </tbody>
-                </table>
+               
+               <table border="1">
+    <thead>
+        <tr>
+            <th>Bills</th>
+            <th>No. of Bills</th>
+            <th>Amount</th>
+        </tr>
+    </thead>
+    <tbody id="cashDrawerBodyProduct">
+        <!-- Data will be inserted here -->
+    </tbody>
+</table>
+
+<script src="Product.js"></script>
             </div>
             
             <div class="recommendation-container" style="padding: 0px 20px;">

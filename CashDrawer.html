@@ -6,17 +6,29 @@
   <title>POS Layout Skeleton</title>
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- Google fonts -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Slabo+27px&display=swap" rel="stylesheet">
-
+  
+  <style>
+    /* Hide the manual panel initially */
+    .hidden {
+      display: none;
+    }
+    .panel {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px 0;
+      background-color: #f9f9f9;
+    }
+  </style>
 </head>
 <body>
 
   <!-- Top Navigation Bar -->
   <header class="topbar">
-   <a href=""> <div class="brand-name">Goldilocks-POS</div> </a>
+   <a href="#"> <div class="brand-name">Goldilocks-POS</div> </a>
     <nav class="nav-links">
       <a href="index.html">Cashier</a>
       <a href="Product.html">Products</a>
@@ -24,10 +36,36 @@
     </nav>
   </header>
 
+  <!-- Main Content -->
+  <input type="number" id="totalAmount" placeholder="Enter Total Amount">
+  <button id="generateAuto">Generate Auto</button>
+  <button id="manualInputBtn">Manual Input</button>  
 
+  <!-- Manual Input Form -->
+  <div id="manualPanel" class="panel hidden">
+    <h4>Enter Breakdown</h4>
+    <div id="manualInputs"></div>
+    <button id="submitManual">Submit Breakdown</button>
+    <button id="closePanel">Close</button>
+  </div>
 
- <!-- JS CONNECTOR -->
- <script src="POS.js"></script>
+  <!-- Cash Drawer Table -->
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Bills</th>
+        <th>No. of Bills</th>
+        <th>Amount</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="cashDrawerBody">
+      <!-- Data will be inserted here -->
+    </tbody>
+  </table>
+
+  <!-- JS Connector -->
+  <script src="CashDrawer.js"></script>
 
 </body>
 </html>

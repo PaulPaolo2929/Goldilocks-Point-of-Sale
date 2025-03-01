@@ -39,82 +39,12 @@ updateDateTime();
 // Update every second
 setInterval(updateDateTime, 1000);
 
-function cashDrawerRandomizer() {
-    const denominations = [500, 200, 100, 50, 20, 10, 5, 1, 0.25];
 
-    function getDenominationBreakdown(totalAmount) {
-        let remainingAmount = totalAmount;
-        return denominations.map(denomination => {
-            if (remainingAmount <= 0) return { denomination, count: 0 };
-            let maxCount = Math.floor(remainingAmount / denomination);
-            let count = maxCount > 0 ? Math.floor(Math.random() * (maxCount + 1)) : 0;
-            remainingAmount -= count * denomination;
-            remainingAmount = parseFloat(remainingAmount.toFixed(2));
-            return { denomination, count };
-        }).filter(entry => entry.count > 0);
-    }
 
-    function renderTable(breakdown) {
-        const tableBody = document.getElementById("cashDrawerBody");
-        tableBody.innerHTML = breakdown.map(row =>
-            `<tr><td>${row.denomination}</td><td>${row.count}</td><td>${(row.denomination * row.count).toFixed(2)}</td></tr>`
-        ).join('');
-    }
 
-    function handleGenerateAuto() {
-        const totalAmount = parseFloat(document.getElementById("totalAmount").value);
-        if (isNaN(totalAmount) || totalAmount <= 0) {
-            alert("Please enter a valid total amount.");
-            return;
-        }
-        const breakdown = getDenominationBreakdown(totalAmount);
-        renderTable(breakdown);
-    }
 
-    function openManualPanel() {
-        const manualPanel = document.getElementById("manualPanel");
-        const manualInputs = document.getElementById("manualInputs");
-        manualInputs.innerHTML = "";
 
-        denominations.forEach(denomination => {
-            const div = document.createElement("div");
-            div.innerHTML = `
-                <label>${denomination}: </label>
-                <input type="number" min="0" id="input-${denomination}" value="0">
-            `;
-            manualInputs.appendChild(div);
-        });
 
-        manualPanel.classList.remove("hidden");
-    }
-
-    function closeManualPanel() {
-        document.getElementById("manualPanel").classList.add("hidden");
-    }
-
-    function handleManualSubmit() {
-        let totalAmount = 0;
-        const breakdown = denominations.map(denomination => {
-            const count = parseInt(document.getElementById(`input-${denomination}`).value) || 0;
-            const amount = count * denomination;
-            totalAmount += amount;
-            return { denomination, count };
-        }).filter(entry => entry.count > 0);
-
-        document.getElementById("totalAmount").value = totalAmount.toFixed(2); // Update totalAmount input
-        renderTable(breakdown);
-        closeManualPanel();
-    }
-
-    // Event Listeners
-    document.getElementById("generateAuto").addEventListener("click", handleGenerateAuto);
-    document.getElementById("manualInputBtn").addEventListener("click", openManualPanel);
-    document.getElementById("submitManual").addEventListener("click", handleManualSubmit);
-    document.getElementById("closePanel").addEventListener("click", closeManualPanel);
-}
-
-// Initialize the functionality
-cashDrawerRandomizer();
 
 
 
@@ -321,5 +251,29 @@ const getChangeBreakdown = (change) =>
 function printReceipt() {
     window.print();
 }
+
+// ===================When you switch to the Cashier Page (index.html), the script retrieves the stored data and updates the "Current Cash Drawer" table.=============
+document.addEventListener("DOMContentLoaded", function () {
+    function renderCashDrawerTable() {
+        const breakdown = JSON.parse(localStorage.getItem("cashDrawerData")) || [];
+        const tableBody = document.getElementById("cashDrawerBodyProduct");
+
+        if (breakdown.length === 0) {
+            tableBody.innerHTML = "<tr><td colspan='3' style='text-align: center;'>No cash available</td></tr>";
+            return;
+        }
+
+        tableBody.innerHTML = breakdown.map(row =>
+            `<tr>
+                <td>${row.denomination}</td>
+                <td>${row.count}</td>
+                <td>${(row.denomination * row.count).toFixed(2)}</td>
+            </tr>`
+        ).join('');
+    }
+
+    renderCashDrawerTable();
+});
+
 
 

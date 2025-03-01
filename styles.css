@@ -337,6 +337,7 @@ td {
   margin-bottom: 20px;
 }
 
+/* ===============================Printing The Receipt into pdf============== */
 @media print {
   body * {
       visibility: hidden; /* Hide everything except the receipt */
@@ -356,32 +357,28 @@ td {
       font-family: 'Arial', sans-serif;
       font-size: 16px;
       line-height: 1.5;
-      height: auto !important; /* ✅ AUTO-ADJUST HEIGHT */
+      height: auto !important; /* ✅ Auto-adjust height based on content */
       min-height: 100mm; /* Ensures it's not too small */
   }
 
   .receipt-items-container {
       overflow: visible !important;
-      height: auto !important; /* ✅ EXPANDS WITH CONTENT */
+      height: auto !important; /* ✅ Expands with content */
   }
 
-  /* Header and Footer - Keep Centered */
-  .receipt-header,
-  .receipt-footer {
-      text-align: center;
-      font-weight: bold;
-      font-size: 18px;
-  }
-
-  /* Customer details - Left Aligned */
-  .receipt-header p {
-      text-align: left;
+  /* ✅ Fix for Table Headers (Gray Background) */
+  .items th {
+      background-color: #f2f2f2 !important; /* ✅ Force light gray background */
+      color: black !important; /* Ensure text is visible */
+      -webkit-print-color-adjust: exact !important; /* ✅ Ensure colors print */
+      print-color-adjust: exact !important;
+      border: 1px solid #ddd;
+      padding: 8px;
       font-size: 16px;
-      font-weight: normal;
-      margin: 5px 0;
+      text-align: left;
   }
 
-  .items th, .items td {
+  .items td {
       border: 1px solid #ddd;
       padding: 8px;
       font-size: 16px;
