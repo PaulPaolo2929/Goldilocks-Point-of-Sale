@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goldilocks-POS</title>
+
+    <link rel="icon" type="image/x-icon" href="favcon.ico"/>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- ICON TAB -->
+    <link rel="icon" type="image/x-icon" href="favcon.ico"/>  
+      <style>
+        @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap");
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto Slab', sans-serif;
+        }
+
+        /* body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background: radial-gradient(circle, rgba(255, 255, 200, 0.8) 20%, #FFD700 60%);
+            overflow: hidden;
+            text-align: center;
+            color: #4B2E19; /* Dark Brown */
+         
+
+        body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background: radial-gradient(circle, 
+        rgba(255, 255, 200, 1) 10%, 
+        rgba(255, 253, 120, 0.8) 40%, 
+        rgba(255, 236, 32, 0.7) 70%, 
+        #FFD700 100%);
+    overflow: hidden;
+    text-align: center;
+    color: #4B2E19; /* Dark Brown */
+}
+
+
+        .intro {
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            background: radial-gradient(circle, rgba(255, 255, 200, 0.9) 20%, #FFD700 60%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeOut 2s forwards 3s; /* Smooth fade out after 3s */
+        }
+
+        .logo {
+            width: 400px;
+            opacity: 0;
+            transform: translateX(100px); /* Starts from the right */
+            animation: fadeIn 1.5s forwards, slideInRight 1.5s forwards;
+        }
+
+        .main-content {
+            opacity: 0;
+            animation: fadeInText 2s forwards 5s; /* Fade in smoothly after intro disappears */
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes slideInRight {
+            0% { transform: translateX(100px); } /* Start off-screen to the right */
+            100% { transform: translateX(0); } /* Slide to center */
+        }
+
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        @keyframes fadeInText {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="intro">
+        <img src="./images/logo.png" alt="Goldilocks-POS Logo" class="logo">
+    </div>
+
+    <div class="main-content">
+        <h1>Welcome to Goldilocks-POS</h1>
+        <p>Cake Shop Point-of-Sale System</p>
+    </div>
+
+    <script>
+        window.addEventListener("load", () => {
+            setTimeout(() => {
+                document.querySelector(".intro").style.display = "none";
+
+                setTimeout(() => {
+                    window.location.href = "index.html";
+                }, 2500); // Redirect after smooth transition
+            }, 5000); // Wait for full animation before redirect
+        });
+    </script>
+
+</body>
+</html>
