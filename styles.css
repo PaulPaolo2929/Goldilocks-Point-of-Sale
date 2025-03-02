@@ -26,6 +26,9 @@
   box-sizing: border-box;
   font-family: "Roboto Slab", serif;
 }
+div {
+  font-family: Lucida Handwriting;
+}
 
 body {
   font-family: Arial, sans-serif;

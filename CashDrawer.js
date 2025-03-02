@@ -1,5 +1,5 @@
 function cashDrawerRandomizer() {
-    const denominations = [500, 200, 100, 50, 20, 10, 5, 1, 0.25];
+    const denominations = [500, 200, 100, 50, 20, 10, 5, 1];
 
     function getDenominationBreakdown(totalAmount) {
         let remainingAmount = totalAmount;
@@ -12,6 +12,8 @@ function cashDrawerRandomizer() {
             return { denomination, count };
         }).filter(entry => entry.count > 0);
     }
+
+    
 
     function renderTable(breakdown) {
         const tableBody = document.getElementById("cashDrawerBody");
@@ -36,9 +38,14 @@ function cashDrawerRandomizer() {
 
     function saveToLocalStorage(breakdown) {
         localStorage.setItem("cashDrawerData", JSON.stringify(breakdown));
+
+        
+        
     }
 
     function handleGenerateAuto() {
+        let amount = document.getElementById("totalAmount").value;
+    localStorage.setItem("cashTotal", amount); // Store the value in localStorage
         const totalAmount = parseFloat(document.getElementById("totalAmount").value);
         if (isNaN(totalAmount) || totalAmount <= 0) {
             alert("Please enter a valid total amount.");
@@ -47,6 +54,8 @@ function cashDrawerRandomizer() {
         const breakdown = getDenominationBreakdown(totalAmount);
         renderTable(breakdown);
         saveToLocalStorage(breakdown);
+
+
     }
 
     function openManualPanel() {
@@ -115,6 +124,8 @@ function cashDrawerRandomizer() {
     // Load saved data when page refreshes
     let savedData = JSON.parse(localStorage.getItem("cashDrawerData")) || [];
     renderTable(savedData);
+
+   
 
     // Attach event listeners
     document.getElementById("generateAuto").addEventListener("click", handleGenerateAuto);

@@ -1,3 +1,14 @@
+function loadCashTotal() {
+    let storedAmount = localStorage.getItem("cashTotal");
+    if (storedAmount) {
+        document.getElementById("cashTotal").textContent = `₱${parseFloat(storedAmount).toFixed(2)}`;
+    } else {
+        document.getElementById("cashTotal").textContent = storedAmount;; // Default display
+    }
+    
+}
+window.onload = loadCashTotal;
+
 
 // Receipt Updater
 function updateReceipt1() {
@@ -9,7 +20,100 @@ function updateReceipt1() {
     document.getElementById("Customer-name").innerText = customerName;
     document.getElementById("r-paid").innerText = `${parseFloat(amountPaid).toFixed(2)}`;
     document.getElementById("r-number").innerText = receiptNumber; // ✅ Fixed to display receipt number
+
+    // ✅ Save to localStorage
+    localStorage.setItem("customerName", customerName);
+    localStorage.setItem("amountPaid", amountPaid);
+    localStorage.setItem("receiptNumber", receiptNumber);
 }
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    let checkoutButton = document.getElementById("checkOut-btn");
+    if (checkoutButton) {
+        checkoutButton.addEventListener("click", checkout);
+    }
+});
+
+function checkout() {
+    // 1️⃣ Get input values
+    let customerName = document.getElementById("r-Customer").value.trim();
+    let amountPaid = parseFloat(document.getElementById("AmountPaid").value.trim()) || 0;
+    let grandTotal = parseFloat(updateGrandTotal());
+
+    // 2️⃣ Validate fields
+    if (customerName === "") {
+        alert("Please enter the customer name.");
+        return;
+    }
+    if (amountPaid < grandTotal) {
+        alert("Insufficient amount paid.");
+        return;
+    }
+
+    updateReceipt1();
+    printReceipt();
+    updateCashTotal(grandTotal);
+
+    // 5️⃣ Clear cart and reset fields
+    setTimeout(() => {
+        localStorage.removeItem("cart");
+        document.querySelector(".product-table tbody").innerHTML = ""; // Clear cart table
+        // Clear receipt table
+        document.querySelector(".receipt-items-container .items tbody").innerHTML = ""; 
+        // Update receipt display to reflect the cleared cart
+        
+        resetCheckoutFields();
+        alert("Checkout successful!");
+        updateReceipt();
+    }, 1000); // Delay clearing fields for 1 second to allow printing
+
+}
+
+// Function to update cash total
+function updateCashTotal(grandTotal) {
+    let cashTotal = parseFloat(localStorage.getItem("cashTotal")) || 0;
+    cashTotal += grandTotal;
+
+    localStorage.setItem("cashTotal", cashTotal.toFixed(2)); // Update storage
+    document.getElementById("cashTotal").textContent = `₱${cashTotal.toFixed(2)}`; // Update UI
+}
+
+function resetCheckoutFields() {
+    document.getElementById("r-Customer").value = "";
+    document.getElementById("Product-Code").value = "";
+    document.getElementById("AmountPaid").value = "";
+    document.getElementById("changeAmount").textContent = "₱0.00";
+    document.getElementById("r-change").textContent = "₱0.00";
+
+    // Clear displayed receipt details
+    document.getElementById("Customer-name").innerText = "";
+    document.getElementById("r-number").value = "";
+    document.getElementById("r-paid").innerText = "0.00";
+    document.getElementById("r-number").innerText = "";
+    document.getElementById("r-change").innerText = "0.00";
+    document.getElementById("changeAmount").textContent = "₱0.00";
+    document.getElementById("changeTotal").textContent = "₱0.00";
+
+    // Clear change breakdown table
+    let tableBody = document.getElementById("denominationTable");
+    tableBody.innerHTML = "";
+
+    // Clear stored data in localStorage
+    localStorage.removeItem("customerName");
+    localStorage.removeItem("amountPaid");
+    localStorage.removeItem("receiptNumber");
+    localStorage.removeItem("changeAmount");
+    localStorage.removeItem("changeBreakdown");
+
+     // Re-render UI changes 
+     updateGrandTotal();
+}
+
+
+
+
+
 
 // Trigger update when amount paid is entered
 document.getElementById("AmountPaid")?.addEventListener("input", updateReceipt1);
@@ -41,16 +145,39 @@ setInterval(updateDateTime, 1000);
 
 
 
-
-
-
-
-
-
-
 // ================ Product table script========
 document.addEventListener("DOMContentLoaded", function () {
     loadCartData();
+
+    // ✅ Load saved receipt data (customer name, amount paid, receipt number)
+    let savedCustomerName = localStorage.getItem("customerName") || "";
+    let savedAmountPaid = localStorage.getItem("amountPaid") || "0.00";
+    let savedReceiptNumber = localStorage.getItem("receiptNumber") || "";
+    let savedChange = localStorage.getItem("changeAmount") || "0.00";
+    let savedChangeBreakdown = JSON.parse(localStorage.getItem("changeBreakdown")) || [];
+
+    document.getElementById("r-Customer").value = savedCustomerName;
+    document.getElementById("AmountPaid").value = savedAmountPaid;
+    document.getElementById("Product-Code").value = savedReceiptNumber;
+
+    document.getElementById("Customer-name").innerText = savedCustomerName;
+    document.getElementById("r-paid").innerText = `${parseFloat(savedAmountPaid).toFixed(2)}`;
+    document.getElementById("r-number").innerText = savedReceiptNumber;
+    document.getElementById("changeAmount").textContent = `₱${savedChange}`;
+    document.getElementById("changeTotal").textContent = `₱${savedChange}`;
+    document.getElementById("r-change").textContent = `₱${savedChange}`;
+
+    // ✅ Load and update the change breakdown table
+    let tableBody = document.getElementById("denominationTable");
+    tableBody.innerHTML = ""; // Clear existing rows
+
+    savedChangeBreakdown.forEach(({ denomination, quantity }) => {
+        let row = `<tr><td>₱${denomination}</td><td>${quantity}</td></tr>`;
+        tableBody.innerHTML += row;
+    });
+
+    updateGrandTotal(); // ✅ Update total kapag ni-load ang page
+
 });
 
 // ✅ Load Cart from LocalStorage & Auto Update Total
@@ -208,7 +335,7 @@ const getChangeBreakdown = (change) =>
         }
     
         const grandTotal = parseFloat(updateGrandTotal());
-        console.log("Grand Total from updateGrandTotal():", grandTotal); // Debug log
+        
     
         if (isNaN(grandTotal)) {
             alert("Error calculating the grand total. Please check your data.");
@@ -221,12 +348,61 @@ const getChangeBreakdown = (change) =>
         }
     
         let change = amountPaid - grandTotal;
-        
+
+        // ✅ Save change amount to localStorage before displaying it
+    localStorage.setItem("changeAmount", change.toFixed(2));
+    
         document.getElementById("changeAmount").textContent = `₱${change.toFixed(2)}`;
         document.getElementById("changeTotal").textContent = `₱${change.toFixed(2)}`;
-        document.getElementById("r-change").textContent = `${change.toFixed(2)}`; // Update the <span> inside <p>
+        document.getElementById("r-change").textContent = `${change.toFixed(2)}`;
     
-        let changeBreakdown = getChangeBreakdown(change);
+        let cashDrawer = JSON.parse(localStorage.getItem("cashDrawerData")) || [];
+    
+        // Get available denominations in descending order
+        const availableDenominations = [500, 200, 100, 50, 20, 10, 5, 1];
+        let changeBreakdown = [];
+    
+        for (let denom of availableDenominations) {
+    
+            // Find matching denomination in cash drawer
+            let index = cashDrawer.findIndex(entry => entry.denomination === denom);
+    
+            if (index !== -1) {
+                let count = Math.min(Math.floor(change / denom), cashDrawer[index].count);
+    
+                if (count > 0) {
+                    let deductedAmount = count * denom;
+                    change -=deductedAmount;
+                    change = parseFloat(change.toFixed(2)); // Avoid floating point errors
+    
+                    changeBreakdown.push({ denomination: denom, quantity: count });
+                    cashDrawer[index].count -= count;
+
+                    
+    
+                    // Remove if zero
+                    if (cashDrawer[index].count === 0) {
+                        cashDrawer[index].count = 0; 
+                    }
+                }
+            }
+    
+            if (change === 0) break;
+        }
+    
+        if (change > 0) {
+            alert("Not enough denominations available to give exact change.");
+            return;
+        }
+    
+        // Save updated cash drawer
+        localStorage.setItem("cashDrawerData", JSON.stringify(cashDrawer));
+        localStorage.setItem("changeBreakdown", JSON.stringify(changeBreakdown)); // ✅ Save change breakdown
+        window.dispatchEvent(new Event("storage"));
+
+    
+        // Update the table with the new breakdown
+       
         let tableBody = document.getElementById("denominationTable");
         tableBody.innerHTML = "";
     
@@ -234,14 +410,19 @@ const getChangeBreakdown = (change) =>
             let row = `<tr><td>₱${denomination}</td><td>${quantity}</td></tr>`;
             tableBody.innerHTML += row;
         });
-        
     
+        // Re-render the cash drawer
+        renderTable(cashDrawer);
     }
+
+
+    
+    
 
     // ===========Receipt code generator===========
     function generateReceiptNumber() {
         const randomNum = Math.floor(10000 + Math.random() * 90000); // Generate 5-digit number
-        const receiptNumber = `INV-${randomNum}`;
+        const receiptNumber = `RCPT-${randomNum}`;
         
         document.getElementById("Product-Code").value = receiptNumber;
         updateReceipt1(); // ✅ Update receipt details when new number is generated
@@ -249,7 +430,14 @@ const getChangeBreakdown = (change) =>
     
 // =================Printing Receipt===============
 function printReceipt() {
-    window.print();
+    updateReceipt1(); // Update first
+
+
+    setTimeout(() => {
+        
+        window.print(); // Print AFTER update
+    })
+
 }
 
 // ===================When you switch to the Cashier Page (index.html), the script retrieves the stored data and updates the "Current Cash Drawer" table.=============

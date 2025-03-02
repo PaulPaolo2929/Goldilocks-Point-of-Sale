@@ -18,16 +18,62 @@
 
 
 /* ========== Global Reset & Base Styles ========== */
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto Slab', serif;;
   }
+
+  div {
+    font-family: Lucida Handwriting;
+  }
   body {
     font-family: Arial, sans-serif;
     background-color: #f8f8f8;
     padding: 0px 0px ;
+  }
+
+  h2 {
+    text-align: center;
+    padding: 10px;
+    font-family: algerian;
+    font-weight: 100;
+    font-color:var(--background-color);
+  }
+
+  .container {
+    background-color: rgb(221, 233, 170);
+    border-color:color(from color srgb r g b)
+  }
+
+  .product-grid {
+    display:flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Adds space between images */
+    justify-content: center; /* Centers images */
+  }
+  
+  img {
+    
+    border-color: rgb(17, 17, 14);
+    width: 300px; /* 25% for 4 images per row, minus gap */
+    max-width: 100%; /* Prevents overflow */
+    height: 300px; /* Keeps aspect ratio */
+    border-radius: 15px;
+    border-width: 20px;
+  }
+  p {
+    text-align: center;
+    font-family: cursive;
+  }
+
+  button {
+    border-radius:10px;
+    padding: 10px;
+
   }
   a {
     text-decoration: none;
