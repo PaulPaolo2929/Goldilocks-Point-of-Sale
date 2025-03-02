@@ -41,7 +41,7 @@
     padding: 10px;
     font-family: algerian;
     font-weight: 100;
-    font-color:var(--background-color);
+    color:var(--background-color);
   }
 
   .container {
@@ -95,6 +95,7 @@
     font-size: 1.2rem;
     font-weight: bold;
     color: var(--text-color);
+    font-family: 'Roboto Slab';
   }
   .nav-links a {
     margin-left: 20px;
