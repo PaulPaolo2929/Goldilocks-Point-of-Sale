@@ -24,7 +24,7 @@
 
   <!-- Top Navigation Bar -->
   <header class="topbar">
-   <a href=""> <div class="brand-name">Goldilocks-POS</div> </a>
+   <font style="color: #4A2800;"><a href=""> <div class="brand-name">Goldilocks-POS</div> </a></font>
     <nav class="nav-links">
       <a href="index.html">Cashier</a>
       <a href="Product.html">Products</a>
@@ -44,8 +44,9 @@
       <!-- INFO CONTAINER -->
       <div class="Information">
         <div class="pos-header">
+          <img src="logo.png" width="140" height="140" style="margin-left: 65px;"><BR>
             <!-- POS Header (Point of Sale) --> 
-        <b><font size="6">POINT OF SALE</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
+        <b><font size="6" style="color: #4A2800;">POINT OF SALE</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
            </div>
       </div>
 
@@ -63,7 +64,9 @@
     </div>
 
     <div class="info-container">
-    <h3 style="text-align: center; padding-bottom: 10px;"> CASHIER INFORMATIONS</h3> 
+      <font style="color: #4A2800;">
+    <h3 style="text-align: center; padding-bottom: 10px;"> CASHIER INFORMATIONS</h3>
+    <hr color="#ffd633" style="height: 4px; border-radius: 5px;">
     
     <div class="INFO">
             <div></div>
@@ -81,11 +84,13 @@
             <hr>
                 <span style="color: #b8860b"><strong>Cash Drawer Amount:</strong></span>
                 <div><br>
-                    <b><div id="cashTotal" style="background-color: #ffdb58; padding: 10px; color: #b8860b; border-radius: 5px; text-align: center;">0</div></b>
-                    
+                    <b><div id="cashTotal" style="background-color: #ffdb58; padding: 10px; color:#4A2800; border-radius: 5px; text-align: center;">0</div></b>
+                  </font>
                 </div>
                 </div>
             </div>
+            <hr color="#ffd633" style="height: 4px; border-radius: 5px;">
+            
         </div>
 
     </div>
@@ -95,7 +100,7 @@
       <!-- Product Table / Items List -->
       <div class="product-table">
         <!-- A placeholder for your table of items -->
-        <table>
+        <table class="Order" border="1">
             <thead>
                 <tr>
                     <th>  </th>
@@ -112,6 +117,7 @@
             <tfoot>
             </tfoot>
         </table>
+        <hr color="#ffd633" style="height: 5px; border-radius: 5px;">
       </div>
 
       <!-- Grand Total Display -->
@@ -121,15 +127,16 @@
     </div>
     
     </div>
-
+      <br>
       <div class="Bottom-tableContainer" style="display: flex;">
             <!-- Current Cash Drawer & Recommended Denomination -->
-            <div class="cash-drawer-container" style="padding: 0px 20px;">
+            <div class="cash-drawer-container" style="padding: 0px 20px; background-color:#fdfd96 ;">
                 <h3>Current Cash Drawer</h3>
+
                <!--  -->
         
                
-               <table border="1">
+               <table class="Clint" border="1">
     <thead>
         <tr>
             <th>Bills</th>
@@ -140,14 +147,16 @@
     <tbody id="cashDrawerBodyProduct">
         <!-- Data will be inserted here -->
     </tbody>
-</table>
+  </table>
+  <hr color="#ffd633" style="height: 5px; border-radius: 5px;">
+</div>
 
 <script src="Product.js"></script>
             </div>
-            
-            <div class="recommendation-container" style="padding: 0px 20px;">
+            <div class="MJ" style="display: flex;">
+            <div class="recommendation-container" style="padding: 0px 20px; background-color:#fdfd96">
                 <h3>Recommended Change Denomination</h3>
-                <table>
+                <table class="Paul" border="1">
                     <thead>
                         <tr>
                             <th>Denomination</th>
@@ -229,20 +238,21 @@
               
           </div>
         </div>
+        <br>
    <!-- Summary & Checkout -->
    <div class="summary-checkout">
     <!-- e.g. Total Amount, Change, CHECK OUT button -->
     <!-- Summary & Checkout -->
     <div class="summary-container">
         <h3>SUMMARY</h3>
+        <hr color="#ffd633" style="height: 5px; border-radius: 5px;"><br>
         <p><strong>Total Amount: </strong> <span class="grand-total-amount">0</span></p>
         <p><strong>Amount Paid:</strong> 
             <input type="number" placeholder="Enter amount" id="AmountPaid" oninput="updateReceipt()">
         
-        
         <button class="calculate-btn" onclick="calculateChange()">Calculate</button> </p>
-        <p><strong>Change:</strong> <span id="changeAmount">₱0.00</span></p>     
-        <button id="checkOut-btn">Check Out</button>
+        <p><strong>Change:</strong> <span id="changeAmount">₱0.00</span></p><br>    
+        <button class="buttonC" id="checkOut-btn">Check Out</button>
     </div>
   </div>
 

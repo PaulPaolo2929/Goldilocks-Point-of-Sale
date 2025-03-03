@@ -32,12 +32,12 @@ div {
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #f8f8f8;
+  background-color: #4A2800;
   padding: 0px 0px;
 }
 a {
   text-decoration: none;
-  color: #000;
+  color: #4A2800;
 }
 
 /* ========== Top Bar ========== */
@@ -83,6 +83,7 @@ a {
   margin-left: auto;
   margin-right: auto;
   padding: 40px;
+  height: 1000px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   display: inline-block;
@@ -93,11 +94,12 @@ a {
   border-radius: 10px;
   background-color: #fdfd96;
 }
+
 .INFO {
   display: flex;
   padding: 20px;
   border-radius: 10px;
-  background-color: #fff8dc;
+  background-color: #ffffcc;
 }
 
 h2 {
@@ -115,9 +117,56 @@ h2 {
 .product-table {
   margin-bottom: 20px;
 }
+
 .grand-total {
-  margin-bottom: 20px;
+  background-color:  #ffdb58;
+  color:  #4A2800 ;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+  width: 150px;
+  margin: 20px auto;
 }
+
+.calculate-btn {
+  background-color:#ffdb58; 
+  font-size: 16px;
+  padding: 3px;
+  border: 2px solid;
+  color:  #4A2800;  
+  text-align: center;
+  display: inline-block;
+  transition-duration: 0.4s;
+  cursor: pointer
+}
+
+.calculate-btn:hover {
+  background-color: #4A2800;
+  color:#ffdb58;
+}
+
+
+.buttonC
+{
+  background-color:#ffdb58; 
+  font-size: 16px;
+  padding: 3px;
+  border: 2px solid;
+  color:  #4A2800;  
+  text-align: center;
+  display: inline-block;
+  transition-duration: 0.4s;
+  cursor: pointer
+}
+
+.buttonC:hover {
+  background-color: #4A2800;
+  color:#ffdb58;
+}
+
+
 .drawer-recommendation {
   margin-bottom: 20px;
 }
@@ -133,18 +182,58 @@ h2 {
   background-color: #fdfd96;
 }
 
-table,
-th,
-td {
+.Order
+{
   text-align: center;
-  border: 1px solid black;
+  border: 2px solid black;
+  width: 100%;
   border-collapse: collapse;
 }
+
+.Order:nth-child(1) th {
+  background-color: #ffdb58;
+}
+
+.Order:nth-child(1) tr {
+  background-color: #ffffcc ;
+}
+
+.Clint
+{
+  text-align: center;
+  border: 2px solid black;
+  border-collapse: collapse;
+}
+
+.Clint:nth-child(2) th {
+  background-color: #ffdb58;
+}
+
+.Clint:nth-child(2) tr {
+  background-color: #ffffcc ;
+}
+
+.Paul
+{
+  text-align: center;
+  border: 2px solid black;
+  border-collapse: collapse;
+}
+
+.Paul:nth-child(3) td {
+  background-color: #ffdb58;
+}
+
+.Paul:nth-child(3) td {
+  background-color: #ffffcc ;
+}
+
+
 
 /* ========== Right Section (Receipt) ========== */
 .pos-right {
   flex: 0 0 35%; /* 20% width for the right side */
-  background-color: #fff;
+  background-color:#ffffcc;
   padding: 10px;
   border-radius: 10px;
   /* Optional shadow */
@@ -324,6 +413,9 @@ td {
   margin-bottom: 20px;
 }
 .summary-checkout {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #fffacd;
   margin-bottom: 20px;
 }
 
