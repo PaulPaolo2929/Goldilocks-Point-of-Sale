@@ -25,14 +25,136 @@
   }
   body {
     font-family: Arial, sans-serif;
-    background-color: #f8f8f8;
+    background-color: #4A2800;
     padding: 0px 0px ;
   }
   a {
     text-decoration: none;
     color: #000;
   }
+
+  .Gen
+  {
+    background-color:#ffdb58; 
+    font-size: 14px;
+    padding: 3px;
+    border: 2px solid;
+    color:  #4A2800;  
+    text-align: center;
+    display: inline-block;
+    transition-duration: 0.4s;
+    cursor: pointer
+  }
   
+  .Gen:hover {
+    background-color: #4A2800;
+    color:#ffdb58;
+  }
+
+  .Man
+  {
+    background-color:#ffdb58; 
+    font-size: 14px;
+    padding: 3px;
+    border: 2px solid;
+    color:  #4A2800;  
+    text-align: center;
+    display: inline-block;
+    transition-duration: 0.4s;
+    cursor: pointer
+  }
+  
+  .Man:hover {
+    background-color: #4A2800;
+    color:#ffdb58;
+  }
+  
+  .Sub
+  {
+    background-color:#ffdb58; 
+    font-size: 14px;
+    padding: 3px;
+    border: 2px solid;
+    color:  #4A2800;  
+    text-align: center;
+    display: inline-block;
+    transition-duration: 0.4s;
+    cursor: pointer
+  }
+  
+  .Sub:hover {
+    background-color: #4A2800;
+    color:#ffdb58;
+  }
+
+  .Cbutton
+  {
+    background-color:#ffdb58; 
+    font-size: 14px;
+    padding: 3px;
+    border: 2px solid;
+    color:  #4A2800;  
+    text-align: center;
+    display: inline-block;
+    transition-duration: 0.4s;
+    cursor: pointer
+  }
+  
+  .Cbutton:hover {
+    background-color: #4A2800;
+    color:#ffdb58;
+  }
+
+  table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table, th, td {
+  text-align: center;
+  color: #4A2800;
+  border: 2px solid #4A2800;
+  border-collapse: collapse;
+}
+
+tr:first-child th {
+  background-color: #ffdb58;
+}
+
+
+tr:nth-child(even) {
+  background-color: #ffffcc;
+}
+
+tr:nth-child(odd) {
+  background-color: #ffffcc;
+}
+
+  .cash
+{
+  background: #fffacd;
+  padding: 40px;
+  border-radius: 10px;
+
+}
+
+  .Cash-Drawer
+  {
+    margin: auto;
+    background: #fffacd;
+    padding: 40px;
+    width: 500px; /* Set a width to help with centering */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    
+  }
+
+  .dhessa
+  {
+    text-align: center;
+  }
+
   /* ========== Top Bar ========== */
   .topbar {
     display: flex;

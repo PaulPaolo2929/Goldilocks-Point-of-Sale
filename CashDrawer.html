@@ -19,10 +19,11 @@
       display: none;
     }
     .panel {
-      border: 1px solid #ccc;
+      border: 2px solid #000000;
+      border-radius: 10px;
       padding: 10px;
       margin: 10px 0;
-      background-color: #f9f9f9;
+      background-color: #fff39a;
     }
   </style>
 </head>
@@ -39,17 +40,21 @@
   </header>
 
   <!-- Main Content -->
-  <input type="number" id="totalAmount" placeholder="Enter Total Amount">
-  <button id="generateAuto">Generate Auto</button>
-  <button id="manualInputBtn">Manual Input</button>  
+  <div class="Cash-Drawer">
+    <img src="logo.png" width="160" height="160">
+   <div class="cash">
+  <input class="dhessa" type="number" id="totalAmount" placeholder="Enter Total Amount"><br><br>
+  <button class="Gen" id="generateAuto">Generate Auto</button>
+  <button class="Man" id="manualInputBtn">Manual Input</button>  
 
   <!-- Manual Input Form -->
   <div id="manualPanel" class="panel hidden">
     <h4>Enter Breakdown</h4>
-    <div id="manualInputs"></div>
-    <button id="submitManual">Submit Breakdown</button>
-    <button id="closePanel">Close</button>
+    <div id="manualInputs"></div><br>
+    <button class="Sub" id="submitManual">Submit Breakdown</button>
+    <button class="Cbutton" id="closePanel">Close</button>
   </div>
+   </div>
 
   <!-- Cash Drawer Table -->
   <table border="1">
@@ -65,7 +70,7 @@
       <!-- Data will be inserted here -->
     </tbody>
   </table>
-
+</div>
   <!-- JS Connector -->
   <script src="CashDrawer.js"></script>
 
