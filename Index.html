@@ -1,267 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>POS Layout Skeleton</title>
-  <link rel="stylesheet" href="styles.css" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>POS Layout Skeleton</title>
+    <link rel="stylesheet" href="styles.css" />
 
-  <!-- Google fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Slabo+27px&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Slabo+27px&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- IOCN TAB -->
-  <link rel="icon" type="image/x-icon" href="favcon.ico"/>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favcon.ico" />
+  </head>
+  <body>
+    <!-- Top Navigation Bar -->
+    <header class="topbar">
+      <a href=""><div class="brand-name">Goldilocks-POS</div></a>
+      <nav class="nav-links">
+        <a href="index.html">Cashier</a>
+        <a href="Product.html">Products</a>
+        <a href="CashDrawer.html">Cash Drawer</a>
+      </nav>
+    </header>
 
-  <style>
-        .hidden { display: none; } /* Hides elements */
-        .panel { border: 1px solid #000; padding: 10px; margin-top: 10px; }
-  </style>
-  
-</head>
-<body>
-
-  <!-- Top Navigation Bar -->
-  <header class="topbar">
-   <font style="color: #4A2800;"><a href=""> <div class="brand-name">Goldilocks-POS</div> </a></font>
-    <nav class="nav-links">
-      <a href="index.html">Cashier</a>
-      <a href="Product.html">Products</a>
-      <a href="CashDrawer.html">Cash Drawer</a>
-    </nav>
-  </header>
-
-  <!-- Main Content Container -->
-  <main class="main-container">
-    <!-- LEFT SECTION: POS Area -->
-    <section class="pos-left">
-
-    <div class="UpperParent-cont">
-      <div class="Display">
-
-    
-      <!-- INFO CONTAINER -->
-      <div class="Information">
-        <div class="pos-header">
-          <img src="logo.png" width="140" height="140" style="margin-left: 65px;"><BR>
-            <!-- POS Header (Point of Sale) --> 
-        <b><font size="6" style="color: #4A2800;">POINT OF SALE</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>
-           </div>
-      </div>
-
-      <!-- Customer Info & Product Code -->
-      <div class="customer-info">
-        <!-- Add your inputs/labels here -->
-        <p>Customer Name: <br>
-            <input type="text" id="r-Customer" oninput="updateReceipt1()"> </p>
-            <p>Receipt No: <br>
-                <input type="text" id="Product-Code" readonly>
-                <button onclick="generateReceiptNumber()">Gen Receipt No</button>
-            </p>
-         <!-- e.g. Customer Name, Product Code fields -->
-      </div>
-    </div>
-
-    <div class="info-container">
-      <font style="color: #4A2800;">
-    <h3 style="text-align: center; padding-bottom: 10px;"> CASHIER INFORMATIONS</h3>
-    <hr color="#ffd633" style="height: 4px; border-radius: 5px;">
-    
-    <div class="INFO">
-            <div></div>
-            <p>
-            <img src="images/Ate.jpg" alt="Profile Picture" width="80" style="margin-right: 10px;" ><br><br><br>
-           
-
-            </p>
-
-            <div>
-            <b><p>Dhessa Marie Amparo</p></b>
-            <p><strong>Date: </strong><span class="date"></span></p>
-            <p><strong>Time: </strong><span class="time"></span></p>
-            
-            <hr>
-                <span style="color: #b8860b"><strong>Cash Drawer Amount:</strong></span>
-                <div><br>
-                    <b><div id="cashTotal" style="background-color: #ffdb58; padding: 10px; color:#4A2800; border-radius: 5px; text-align: center;">0</div></b>
-                  </font>
-                </div>
-                </div>
+    <!-- Main Content Container -->
+    <main class="main-container">
+      <!-- LEFT SECTION: POS Area -->
+      <section class="pos-left">
+        <div class="UpperParent-cont">
+          <div class="Display">
+            <!-- POS Header -->
+            <div class="information">
+              <div class="pos-header">
+                <b>POINT OF SALE</b>
+              </div>
             </div>
-            <hr color="#ffd633" style="height: 4px; border-radius: 5px;">
-            
+
+            <!-- Customer Info & Product Code -->
+            <div class="customer-info">
+              <div class="customer-box">
+                <div class="customer-line">
+                  <label for="r-Customer">Customer Name:</label>
+                  <input
+                    type="text"
+                    id="r-Customer"
+                    oninput="updateReceipt1()"
+                  />
+                </div>
+                <div class="receipt-container">
+                  <label for="Product-Code">Receipt No:</label>
+                  <input type="text" id="Product-Code" readonly />
+                  <button onclick="generateReceiptNumber()">Generate</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cashier Information -->
+          <div class="cashier-container">
+            <div class="cashier-header">CASHIER INFORMATION</div>
+            <div class="cashier-body">
+              <div class="cashier-left">
+                <div class="profile-box">
+                  <img
+                    src="./images/Ate.jpg"
+                    alt="Profile Picture"
+                    class="profile-pic"
+                  />
+                </div>
+              </div>
+              <div class="cashier-right">
+                <p><strong>Dhessa Marie Amparo</strong></p>
+                <p>
+                  <strong>Date:</strong>
+                  <span class="date">February 24, 2025</span>
+                </p>
+                <p>
+                  <strong>Time:</strong> <span class="time">00:00:00 am</span>
+                </p>
+                <hr />
+                <p><strong>Cash Drawer Amount:</strong></p>
+                <div class="cash-drawer">
+                  <span class="cash-amount" id="cashTotal">No Cash Available</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-    </div>
-    </div>
-    <br>
-    <div class="TABLE">
-      <!-- Product Table / Items List -->
-      <div class="product-table">
-        <!-- A placeholder for your table of items -->
-        <table class="Order" border="1">
-            <thead>
-                <tr>
-                    <th>  </th>
-                    <th>Quantity</th>
-                    <th>Unit</th>
-                    <th>Product</th>
-                    <th>Unit Price</th>
-                    <th>Total</th>
+        <!-- Product Table / Items List -->
+        <div class="TABLE">
+          <div class="product-table">
+            <table>
+              <thead>
+                <tr class="HEAD">
+                  <th></th>
+                  <th>Quantity</th>
+                  <th>Unit</th>
+                  <th>Product</th>
+                  <th>Unit Price</th>
+                  <th>Total</th>
                 </tr>
-            </thead>
-            <tbody>
-                      <!-- HERE IS WHERE THE DATA FROM PRODUCT TABEL WILL SHOW -->
-            </tbody>
-            <tfoot>
-            </tfoot>
-        </table>
-        <hr color="#ffd633" style="height: 5px; border-radius: 5px;">
-      </div>
+              </thead>
+              <tbody>
+                <!-- Data from product table will be shown here -->
+              </tbody>
+              <tfoot></tfoot>
+            </table>
+          </div>
 
-      <!-- Grand Total Display -->
-      <div class="grand-total">
-        <p>Grand Total:</p> 
-        <p class="grand-total-amount">₱0.00</p> <!-- This will be updated dynamically -->
-    </div>
-    
-    </div>
-      <br>
-      <div class="Bottom-tableContainer" style="display: flex;">
-            <!-- Current Cash Drawer & Recommended Denomination -->
-            <div class="cash-drawer-container" style="padding: 0px 20px; background-color:#fdfd96 ;">
-                <h3>Current Cash Drawer</h3>
+          <!-- Grand Total Display -->
+          <div class="grand-total">
+            <p>Grand Total:</p>
 
-               <!--  -->
-        
-               
-               <table class="Clint" border="1">
-    <thead>
-        <tr>
-            <th>Bills</th>
-            <th>No. of Bills</th>
-            <th>Amount</th>
-        </tr>
-    </thead>
-    <tbody id="cashDrawerBodyProduct">
-        <!-- Data will be inserted here -->
-    </tbody>
-  </table>
-  <hr color="#ffd633" style="height: 5px; border-radius: 5px;">
-</div>
-
-<script src="Product.js"></script>
+            <div>
+              <p class="grand-total-amount">₱0.00</p>
             </div>
-            <div class="MJ" style="display: flex;">
-            <div class="recommendation-container" style="padding: 0px 20px; background-color:#fdfd96">
-                <h3>Recommended Change Denomination</h3>
-                <table class="Paul" border="1">
-                    <thead>
-                        <tr>
-                            <th>Denomination</th>
-                            <th>Quantity</th>
-                        </tr>
-                    </thead>
-                    <tbody id="denominationTable">
-                        <!-- Change breakdown will be inserted here -->
-                    </tbody>
-                </table>
-                <p>Change: <span id="changeTotal">₱0.00</span></p>
-            </div>
-    </div>
+          </div>
+        </div>
 
-    </section>
+        <!-- Cash Drawer & Recommended Denomination -->
+        <div class="Bottom-tableContainer" style="display: flex">
+          <!-- Current Cash Drawer -->
+          <div class="cash-drawer-container" style="padding: 0px 20px">
+            <h3>Current Cash Drawer</h3>
+            <table border="1">
+              <thead>
+                <tr>
+                  <th>Bills</th>
+                  <th>No. of Bills</th>
+                  <th>Amount</th>
+                </tr>
+              </thead>
+              <tbody id="cashDrawerBodyProduct">
+                <!-- Data will be inserted here -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Recommended Change Denomination -->
+          <div class="recommendation-container" style="padding: 0px 20px">
+            <h3>Recommended Change Denomination</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Denomination</th>
+                  <th>Quantity</th>
+                </tr>
+              </thead>
+              <tbody id="denominationTable">
+                <!-- Change breakdown will be inserted here -->
+              </tbody>
+            </table>
+            <p>Change: <span id="changeTotal">₱0.00</span></p>
+          </div>
+        </div>
+      </section>
 
       <!-- RIGHT SECTION: Receipt & Summary -->
       <aside class="pos-right">
-
         <!-- Store/Receipt Information -->
         <div class="receipt-info">
-          <!-- e.g. Luxury Store Inc. / Address / Receipt No. / Date -->
           <div id="receipt">
-      <!-- Fixed header section -->
-      <div class="receipt-header">
-          <p class="header">🍰 GOLDILOCKS POS</p>
-          <p class="header">📍 123 High Street, Laguna, Philippines</p>
-          <p class="header">📞 (123) 456-7890</p>
-          <hr>
-          <p><strong>Customer name:</strong> <span id="Customer-name"></span></p>
-          <p><strong>Receipt No:</strong> <span id="r-number"></span></p>
-          <p><strong>Cashier:</strong> <span id="r-cashier">Dhessa Marie Amparo</span></p>
-          <p><strong>Date: </strong><span class="date"></span></p>
-          <p><strong>Time: </strong><span class="time"></span></p>
-          
-      </div>
-      
-      <!-- Scrollable items section -->
-      <div class="receipt-items-container">
-        <table class="items">
-            <thead> <!-- ✅ Ensures headers remain even when the table updates -->
-                <tr>
+            <!-- Fixed header section -->
+            <div class="receipt-header">
+              <p class="header">🍰 GOLDILOCKS POS</p>
+              <p class="header">📍 123 High Street, Laguna, Philippines</p>
+              <p class="header">📞 (123) 456-7890</p>
+              <hr />
+              <p>
+                <strong>Customer name:</strong> <span id="Customer-name"></span>
+              </p>
+              <p><strong>Receipt No:</strong> <span id="r-number"></span></p>
+              <p>
+                <strong>Cashier:</strong>
+                <span id="r-cashier">Dhessa Marie Amparo</span>
+              </p>
+              <p><strong>Date: </strong><span class="date"></span></p>
+              <p><strong>Time: </strong><span class="time"></span></p>
+            </div>
+
+            <!-- Scrollable items section -->
+            <div class="receipt-items-container">
+              <table class="items">
+                <thead>
+                  <tr>
                     <th>Item</th>
                     <th>Qty</th>
                     <th>Price</th>
                     <th>Total</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Items will be inserted here -->
-            </tbody>
-        </table>
-    </div>
-      
-      <!-- Fixed footer section -->
-      <div class="receipt-footer">
-          <p class="total"><strong>Grand Total:</strong> <span class="grand-total-amount">0.00</span></p>
-          <p class="details"><strong>Amount Paid:</strong> ₱<span id="r-paid">0.00</span></p>
-          <p class="details"><strong>Change:</strong> ₱<span id="r-change">0.00</span></p>
-          <hr>
-          <br>
-          <p class="footer">🍰 Thank you for shopping with us!</p>
-          
-      </div>
-  </div>
-        </div>
-  
-        <!-- Receipt Details Table -->
-        <div class="receipt-table">
-          <!-- e.g. Items, Price, Tax, Discount, etc. -->
-        </div>
-  
-        <!-- Buttons (Clear Cart, Print Receipt, etc.) -->
-        <div class="receipt-buttons">
-          <!-- e.g. CLEAR CART / PRINT RECEIPT -->
-           <!-- Buttons (Clear Cart, Print Receipt, etc.) -->
-          <div class="receipt-buttons">
-              
-              
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Items will be inserted here -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Fixed footer section -->
+            <div class="receipt-footer">
+              <p class="total">
+                <strong>Grand Total:</strong>
+                <span class="grand-total-amount">0.00</span>
+              </p>
+              <p class="details">
+                <strong >Amount Paid:</strong> ₱<span id="r-paid">0.00</span>
+              </p>
+              <p class="details">
+                <strong>Change:</strong> ₱<span id="r-change">0.00</span>
+              </p>
+              <hr />
+              <br />
+              <p class="footer">🍰 Thank you for shopping with us!</p>
+            </div>
           </div>
         </div>
-        <br>
-   <!-- Summary & Checkout -->
-   <div class="summary-checkout">
-    <!-- e.g. Total Amount, Change, CHECK OUT button -->
-    <!-- Summary & Checkout -->
-    <div class="summary-container">
-        <h3>SUMMARY</h3>
-        <hr color="#ffd633" style="height: 5px; border-radius: 5px;"><br>
-        <p><strong>Total Amount: </strong> <span class="grand-total-amount">0</span></p>
-        <p><strong>Amount Paid:</strong> 
-            <input type="number" placeholder="Enter amount" id="AmountPaid" oninput="updateReceipt()">
-        
-        <button class="calculate-btn" onclick="calculateChange()">Calculate</button> </p>
-        <p><strong>Change:</strong> <span id="changeAmount">₱0.00</span></p><br>    
-        <button class="buttonC" id="checkOut-btn">Check Out</button>
-    </div>
-  </div>
 
-</aside>
-</main>
-   
+        <!-- Receipt Details Table -->
+        <div class="receipt-table">
+          <!-- Items, Price, Tax, Discount, etc. -->
+        </div>
 
-  <!-- JS CONNECTOR -->
-  <script src="POS.js"></script>
+        <!-- Buttons (Clear Cart, Print Receipt, etc.) -->
+        <div class="receipt-buttons">
+          <div class="receipt-buttons">
+            <!-- Buttons will be added here -->
+          </div>
+        </div>
 
-</body>
+        <!-- Summary & Checkout -->
+        <div class="summary-checkout">
+          <div class="summary-container">
+            <h3>SUMMARY</h3>
+            <p>
+              <strong>Total Amount: </strong>
+              <span class="grand-total-amount">0</span>
+            </p>
+            <p>
+              <strong id="Amount--paid">Amount Paid:</strong>
+              <input
+                type="number"
+                placeholder="Enter amount"
+                id="AmountPaid"
+                oninput="updateReceipt()"
+              />
+              <button class="calculate-btn" onclick="calculateChange()">
+                Calculate
+              </button>
+            </p>
+            <p><strong>Change:</strong> <span id="changeAmount">₱0.00</span></p>
+            <button id="checkOut-btn">Check Out</button>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <!-- JavaScript Files -->
+    <script src="Product.js"></script>
+    <script src="POS.js"></script>
+  </body>
 </html>

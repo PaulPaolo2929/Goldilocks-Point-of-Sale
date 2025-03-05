@@ -1,22 +1,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap");
 
 :root {
-  --primary-color: #ffc72c; /* Vibrant Yellow - Used for headers and highlights */
-  --secondary-color: #d9a300; /* Deep Gold - Used for borders and accents */
-  --background-color: #fff7e6; /* Light Beige - General background */
+  --primary-color: #fcc613; /* Warm Yellow - Used for headers and highlights */
+  --secondary-color: #ecad06; /* Deep Gold - Used for borders and accents */
+  --background-color: #fff7c2; /* Soft Light Yellow - General background */
   --text-color: #4a2800; /* Dark Brown - Text for contrast */
   --table-header-color: #ffd700; /* Bright Gold - Table headers */
-  --table-border-color: #b8860b; /* Dark Gold - Borders of tables */
+  --table-border-color: #cc8502; /* Rich Gold - Borders of tables */
   --button-danger: #e63946; /* Red - Clear Cart button */
   --button-primary: #3b82f6; /* Blue - Print Receipt button */
   --button-success: #28a745; /* Green - Checkout button */
   --input-border-color: #c4c4c4; /* Light Gray - Input borders */
-  --card-border-color: #e6c200; /* Golden Yellow - Receipt and info section border */
-  --card-border1-color: #fff4b4;
+  --card-border-color: #a25e06; /* Warm Golden Brown - Receipt and info section border */
+  --card-border1-color: #ffe094; /* Soft Pastel Yellow */
 }
 
 .UpperParent-cont {
   display: flex;
+  gap: 150px;
+  
 }
 
 /* ========== Global Reset & Base Styles ========== */
@@ -26,18 +28,16 @@
   box-sizing: border-box;
   font-family: "Roboto Slab", serif;
 }
-div {
-  font-family: Lucida Handwriting;
-}
+
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #4A2800;
+  background-color: #4a2800;
   padding: 0px 0px;
 }
 a {
   text-decoration: none;
-  color: #4A2800;
+  color: #000;
 }
 
 /* ========== Top Bar ========== */
@@ -50,9 +50,10 @@ a {
   border-radius: 0px;
   margin-bottom: 20px;
   margin-top: 0px;
+  
 }
 .brand-name {
-  font-family: 'Roboto Slab';
+  font-family: "Roboto Slab";
   font-size: 1.2rem;
   font-weight: bold;
   color: var(--text-color);
@@ -71,429 +72,754 @@ a {
 .main-container {
   display: flex;
   justify-content: space-between;
-  gap: 20px; /* Space between left & right sections */
-  padding: 0px 20px;
+  gap: 10px; /* Space between left & right sections */
+  padding: 0px 50px; /* Reduced padding */
   height: 86vh;
 }
 
 /* ========== Left Section (POS) ========== */
 .pos-left {
-  display: flex;
+  flex: 1; /* Allow it to take available space */
+  flex: 0 0 60%; /* Takes 60% of the parent container */
+  flex-grow: 2; /* Makes it grow twice as much as other flex items */
   background: #fffacd;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 40px;
-  height: 1000px;
+  margin: 0 auto; /* Center it horizontally */
+  padding: 20px; /* Reduced padding */
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  display: inline-block;
+  
 }
 
-.info-container {
-  padding: 20px;
-  border-radius: 10px;
-  background-color: #fdfd96;
-}
+/* =========iNPUT FIELDS STYLE ======== */
+/* POS Header */
 
-.INFO {
+
+
+.information {
   display: flex;
-  padding: 20px;
-  border-radius: 10px;
-  background-color: #ffffcc;
+  justify-content: left;
+  align-items: center;
+  margin-bottom: 10px;
 }
-
-h2 {
-  font-size: 1rem;
-}
-
-/* Sub-sections in the Left Panel */
+/* POS Header - Left-aligned Plain Text */
 .pos-header {
-  margin-bottom: 20px;
+  font-size: 18px; /* Reduced font size */
+  font-weight: bold;
+  color: #5f3b00; /* Dark brown */
+  font-family: "Roboto Slab", serif;
+  margin-bottom: 10px;
 }
+
+/* Customer Info Container */
 .customer-info {
-  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: px;
 }
 
-.product-table {
-  margin-bottom: 20px;
-}
-
-.grand-total {
-  background-color:  #ffdb58;
-  color:  #4A2800 ;
-  padding: 10px;
+.customer-box {
+  width: 400px; /* Reduced width */
+  padding: 10px; /* Reduced padding */
+  background-color: rgba(255, 242, 211, 0);
+  border: 2px solid rgba(95, 59, 0, 0);
   border-radius: 5px;
+  font-family: "Roboto Slab", serif;
+  padding-left: 0px;
+  padding-top: 10px;
+}
+
+/* Customer Name - Make Label & Input Inline */
+.customer-line {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between label and input */
+  margin-bottom: 10px;
+}
+
+.customer-line label {
+  font-weight: bold;
+  color: #5f3b00;
+  white-space: nowrap; /* Prevents label from breaking into another line */
+}
+
+.customer-line input {
+  flex: 1; /* Makes input take up remaining space */
+  padding: 6px; /* Reduced padding */
+  border: 1px solid #5f3b00;
+  border-radius: 4px;
+  font-size: 12px; /* Reduced font size */
+}
+
+/* Align Receipt Input & Button */
+.receipt-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.receipt-container label {
+  font-weight: bold;
+  color: #5f3b00;
+  white-space: nowrap;
+}
+
+.receipt-container input {
+  flex: 1;
+  min-width: 0;
+  padding: 6px; /* Reduced padding */
+  border: 1px solid #5f3b00;
+  border-radius: 4px;
+  font-size: 12px; /* Reduced font size */
+}
+
+.receipt-container button {
+  background: #fddd76;
+  border: 1px solid #5f3b00;
+  padding: 6px 8px; /* Reduced padding */
+  border-radius: 4px;
+  font-size: 12px; /* Reduced font size */
+  font-weight: bold;
+  color: #5f3b00;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.receipt-container button:hover {
+  background: #ffc107;
+}
+
+/* ==========Cashier Information Styling=========== */
+
+.cashier-container {
+  width: 300px; /* Reduced width */
+  height: 130px;
+  border: 1.5px solid #5f3b00; /* Dark brown border */
+  background-color: #fff2d3; /* Light cream background */
+  border-radius: 5px;
+  font-family: "Roboto Slab";
+  margin-left: 0; /* Removed margin */
+  margin-bottom: 15px; /* Reduced margin */
+  margin-top: 10px;
+}
+
+.cashier-header {
+  background: #ffef94; /* Soft yellow header */
   text-align: center;
   font-weight: bold;
-  font-size: 16px;
-  width: 150px;
-  margin: 20px auto;
+  padding: 6px; /* Reduced padding */
+  font-size: 10px; /* Reduced font size */
+  border-radius: 5px 5px 0 0;
+  color: #2a2509; /* Dark brown text */
+  font-family: "Roboto Slab";
 }
 
-.calculate-btn {
-  background-color:#ffdb58; 
-  font-size: 16px;
-  padding: 3px;
-  border: 2px solid;
-  color:  #4A2800;  
-  text-align: center;
-  display: inline-block;
-  transition-duration: 0.4s;
-  cursor: pointer
-}
-
-.calculate-btn:hover {
-  background-color: #4A2800;
-  color:#ffdb58;
-}
-
-
-.buttonC
-{
-  background-color:#ffdb58; 
-  font-size: 16px;
-  padding: 3px;
-  border: 2px solid;
-  color:  #4A2800;  
-  text-align: center;
-  display: inline-block;
-  transition-duration: 0.4s;
-  cursor: pointer
-}
-
-.buttonC:hover {
-  background-color: #4A2800;
-  color:#ffdb58;
-}
-
-
-.drawer-recommendation {
-  margin-bottom: 20px;
-}
-
-/* The table Left container */
-.Bottom-tableContainer {
+.cashier-body {
   display: flex;
+  align-items: center;
+  padding: 8px; /* Reduced padding */
 }
 
-.TABLE {
-  padding: 20px;
-  border-radius: 10px;
-  background-color: #fdfd96;
+.cashier-left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.Order
-{
+.profile-box {
+  width: 80px; /* Reduced size */
+  height: 80px; /* Reduced size */
+  border: 6px solid #825409; /* Dark brown border */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffef94; /* Light brown background */
+}
+
+.profile-pic {
+  width: 75px; /* Reduced size */
+  height: 75px; /* Reduced size */
+}
+
+.cashier-right {
+  flex: 2;
+  font-size: 10px; /* Reduced font size */
+  padding-left: 8px; /* Reduced padding */
+  color: #5f3b00; /* Dark brown text */
+}
+
+.cashier-right p {
+  margin: 1px 0; /* Reduced margin */
+}
+
+.cash-drawer {
+  background: #fddd76; /* Yellow to orange gradient */
+  padding: 4px; /* Reduced padding */
   text-align: center;
-  border: 2px solid black;
+  font-weight: bold;
+  font-size: 12px; /* Reduced font size */
+  border-radius: 4px;
+  border: 1px solid #ffef94; /* Dark brown border */
+  margin-top: 2px; /* Reduced margin */
+}
+
+.cash-amount {
+  display: block;
+  color: #5f3b00; /* Dark brown text */
+}
+
+/* =======Table Producteditor======= */
+/* ===== Table Container (Fixed) ===== */
+.product-table {
+  max-height: 150px; /* Reduced height */
+  overflow-y: auto;
+  border: 2px solid #fcc613;
+  border-radius: 8px;
+  background: white;
+  min-height: 100px; /* Reduced height */
+  display: block; /* Ensures proper scrolling */
+}
+
+/* ===== Scrollbar Styling (Smooth & Clean) ===== */
+.product-table::-webkit-scrollbar {
+  width: 8px; /* Slim scrollbar */
+}
+
+.product-table::-webkit-scrollbar-thumb {
+  background-color: #fcc613; /* Scroll thumb color */
+  border-radius: 6px;
+  border: 2px solid white; /* Adds space between track */
+}
+
+.product-table::-webkit-scrollbar-track {
+  background-color: #fff6d1; /* Soft track color */
+  border-radius: 8px;
+}
+
+/* ===== Table Structure ===== */
+.product-table table {
   width: 100%;
   border-collapse: collapse;
+  font-size: 12px; /* Reduced font size */
+  table-layout: fixed; /* Ensures column widths follow your settings */
 }
 
-.Order:nth-child(1) th {
-  background-color: #ffdb58;
+/* Table Header */
+thead {
+  background-color: #ffef94;
+  color: #431e05;
+  font-weight: bold;
+  text-align: left;
+  font-size: 12px;
 }
 
-.Order:nth-child(1) tr {
-  background-color: #ffffcc ;
+/* Table Rows */
+tbody tr {
+  transition: background 0.3s ease-in-out;
 }
 
-.Clint
-{
+tbody tr:hover {
+  background: #fff7c2; /* Light yellow for hover */
+}
+
+/* Table Cells */
+th,
+td {
+  padding: 6px;
+  border-bottom: 1px solid #eab552;
+}
+
+/* ===== Ensure Column Widths Work Properly ===== */
+.product-table th:nth-child(1),
+.product-table td:nth-child(1) {
+  width: 5%;
+} /* Checkbox/Icon */
+.product-table th:nth-child(2),
+.product-table td:nth-child(2) {
+  width: 10%;
+} /* Quantity */
+.product-table th:nth-child(3),
+.product-table td:nth-child(3) {
+  width: 10%;
+} /* Unit */
+.product-table th:nth-child(4),
+.product-table td:nth-child(4) {
+  width: 35%;
+} /* Product */
+.product-table th:nth-child(5),
+.product-table td:nth-child(5) {
+  width: 20%;
+} /* Unit Price */
+.product-table th:nth-child(6),
+.product-table td:nth-child(6) {
+  width: 20%;
+} /* Total */
+
+/* Ensure quantity input fits well */
+.product-table .quantity-input {
+  width: 35px; /* Reduced width */
   text-align: center;
-  border: 2px solid black;
+  padding: 4px;
+  font-size: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* ===== Maintain White Background Even When Empty ===== */
+.product-table tbody:empty::before {
+  content: " ";
+  display: block;
+  height: 100px; /* Reserves space for 3 rows */
+  background: white;
+}
+
+/* ============Grand-total style==== */
+/* Grand Total Container */
+.grand-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffec9e; /* Light yellow */
+  border: 2px solid #5a2e00; /* Dark brown */
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  color: #4d3300; /* Dark brown */
+  width: 100%;
+  margin-top: 10px;
+  
+}
+
+/* Grand Total Text */
+.grand-total p {
+  margin: 0;
+}
+
+/* Grand Total Amount */
+.grand-total-amount {
+  font-weight: bold;
+  color: #4d3300;
+  font-size: 14px;
+}
+
+
+/* ===========Cash drawer and change recommendation denomination style */
+/* ===== General Table Styling (Applied to All Tables) ===== */
+.cash-drawer-container table,
+.recommendation-container table {
+  width: 100%;
   border-collapse: collapse;
+  font-size: 12px; /* Reduced font size */
+  table-layout: fixed; /* Ensures columns are aligned */
+  border: 2px solid #fcc613; /* Matching border */
+  border-radius: 8px;
+  background: white;
 }
 
-.Clint:nth-child(2) th {
-  background-color: #ffdb58;
+/* Table Headers */
+.cash-drawer-container th,
+.recommendation-container th {
+  background-color: #ffef94;
+  color: #431e05;
+  font-weight: bold;
+  text-align: left;
+  font-size: 12px;
 }
 
-.Clint:nth-child(2) tr {
-  background-color: #ffffcc ;
+/* Table Cells */
+.cash-drawer-container th,
+.cash-drawer-container td,
+.recommendation-container th,
+.recommendation-container td {
+  padding: 6px;
+  border-bottom: 1px solid #eab552;
+  text-align: center; /* Align text properly */
 }
 
-.Paul
-{
-  text-align: center;
-  border: 2px solid black;
-  border-collapse: collapse;
+/* Hover Effect for Table Rows */
+.cash-drawer-container tbody tr:hover,
+.recommendation-container tbody tr:hover {
+  background: #fff7c2; /* Light yellow hover effect */
 }
 
-.Paul:nth-child(3) td {
-  background-color: #ffdb58;
+/* Scrollable Tables When Data Overflows */
+.cash-drawer-container,
+.recommendation-container {
+  max-height: 150px; /* Reduced height */
+  overflow-y: auto;
+  display: block;
 }
 
-.Paul:nth-child(3) td {
-  background-color: #ffffcc ;
+/* Custom Scrollbar */
+.cash-drawer-container::-webkit-scrollbar,
+.recommendation-container::-webkit-scrollbar {
+  width: 8px;
 }
 
+.cash-drawer-container::-webkit-scrollbar-thumb,
+.recommendation-container::-webkit-scrollbar-thumb {
+  background-color: #fcc613;
+  border-radius: 6px;
+  border: 2px solid white;
+}
 
+.cash-drawer-container::-webkit-scrollbar-track,
+.recommendation-container::-webkit-scrollbar-track {
+  background-color: #fff6d1;
+  border-radius: 8px;
+}
+
+/* Maintain White Background When Empty */
+.cash-drawer-container tbody:empty::before,
+.recommendation-container tbody:empty::before {
+  content: " ";
+  display: block;
+  height: 100px; /* Reserves space for aesthetics */
+  background: white;
+}
 
 /* ========== Right Section (Receipt) ========== */
 .pos-right {
-  flex: 0 0 35%; /* 20% width for the right side */
-  background-color:#ffffcc;
-  padding: 10px;
+  flex: 0 0 25%; /* 20% width for the right side */
+  background-color: #fff;
+  padding: 5px; /* Reduced padding */
   border-radius: 10px;
   /* Optional shadow */
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-
-  /* =================== Receipt Styling ================*/
-  /* Receipt Styling */
-  #receipt {
-    width: 300px;
-    height: 500px; /* Fixed height for the receipt */
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    font-family: sans-serif;
-    font-size: 12px;
-    margin: 20px auto;
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* Header section - stays fixed */
-  .receipt-header {
-    flex-shrink: 0; /* Prevents the header from shrinking */
-  }
-
-  /* Scrollable items section */
-  .receipt-items-container {
-    flex: 1; /* Takes available space */
-    overflow-y: auto; /* Makes this section scrollable */
-    margin: 10px 0;
-    border-top: 1px dashed #000;
-    border-bottom: 1px dashed #000;
-    padding: 10px 0;
-  }
-
-  /* Footer section - stays fixed */
-  .receipt-footer {
-    flex-shrink: 0; /* Prevents the footer from shrinking */
-  }
-
-  #receipt .header {
-    text-align: center;
-    margin: 0;
-    padding: 3px;
-    font-weight: bold;
-  }
-
-  #receipt hr {
-    border: none;
-    border-top: 1px dashed #000;
-    margin: 10px 0;
-  }
-
-  #receipt p {
-    margin: 5px 0;
-    color: #000;
-    border: none;
-    float: none;
-    font-size: 12px;
-    padding: 2px;
-  }
-
-  #receipt .items {
-    width: 100%;
-    border-collapse: collapse;
-  }
-
-  #receipt .items th,
-  #receipt .items td {
-    border: 1px solid #ddd;
-    padding: 5px;
-    text-align: left;
-    font-size: 11px;
-  }
-
-  #receipt .items th {
-    background-color: #f2f2f2;
-    position: sticky;
-    top: 0; /* Keeps the header visible when scrolling */
-    z-index: 1;
-  }
-
-  #receipt .total {
-    font-weight: bold;
-    font-size: 14px;
-  }
-
-  #receipt .details {
-    font-size: 12px;
-  }
-
-  #receipt .footer {
-    text-align: center;
-    font-weight: bold;
-    margin-top: 10px;
-  }
-
-  #receipt button {
-    height: 30px;
-    width: 100%;
-    background-color: #106d96;
-    border: 1px solid #106d96;
-    color: #fff;
-    margin-top: 10px;
-    font-size: 14px;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-
-  #receipt button:hover {
-    background-color: #fff;
-    color: #106d96;
-  }
-
-  /* Adding a subtle Goldilocks brand color */
-  #r-cashier {
-    color: #e6a932;
-    font-weight: bold;
-  }
-
-  /* Additional styling for the price values */
-  #r-grandTotal,
-  #r-paid,
-  #r-change {
-    font-weight: bold;
-  }
-
-  #r-change {
-    color: #2a8000;
-  }
-
-  /* Custom scrollbar styling for better aesthetics */
-  .receipt-items-container::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  .receipt-items-container::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-
-  .receipt-items-container::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 3px;
-  }
-
-  .receipt-items-container::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
-
-  /* Adding a subtle Goldilocks brand color */
-  #r-cashier {
-    color: #e6a932;
-    font-weight: bold;
-  }
-
-  /* Additional styling for the price values */
-  #r-grandTotal,
-  #r-paid,
-  #r-change {
-    font-weight: bold;
-  }
-
-  #r-change {
-    color: #2a8000;
-  }
 }
 
-/* Sub-sections in the Right Panel */
-.receipt-info {
-  margin-bottom: 20px;
-}
-.receipt-table {
-  margin-bottom: 20px;
-}
-.receipt-buttons {
-  margin-bottom: 20px;
-}
-.summary-checkout {
-  padding: 20px;
-  border-radius: 10px;
-  background-color: #fffacd;
-  margin-bottom: 20px;
+/* =================== Receipt Styling ================*/
+/* ===============================Screen Styles============================== */
+#receipt {
+  width: 95%;
+  height: 95%;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  font-family: sans-serif;
+  font-size: 10px;
+  margin: 10px auto;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
 }
 
-/* ========== Utility Classes (Optional) ========== */
-.text-center {
-  text-align: center;
+/* Header section - stays fixed */
+.receipt-header {
+  flex-shrink: 0;
 }
-.text-right {
-  text-align: right;
+
+/* Scrollable Items Container with Fixed Placeholder Height */
+.receipt-items-container {
+  min-height: 70px;  /* Enough space for 2 items */
+  max-height: 70px;  /* Remains fixed in height for scrolling */
+  overflow-y: auto;
+  margin: 5px 0;
+  border-top: 1px dashed #000;
+  border-bottom: 1px dashed #000;
+  padding: 5px 0;
+  background-color: #fff;
 }
-.text-left {
+
+/* Show "No item yet" only if container is empty */
+.receipt-items-container:empty::before {
+  content: "No item yet";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70px;
+  color: #aaa;
+  font-size: 10px;
+}
+
+/* Table (remove position: relative and z-index) */
+#receipt .items {
+  width: 100%;
+  border-collapse: collapse;
+  /* position: relative;  <-- Removed */
+  /* z-index: 1;          <-- Removed */
+}
+
+/* Cells */
+#receipt .items th,
+#receipt .items td {
+  border: 1px solid #ddd;
+  padding: 3px;
   text-align: left;
-}
-.mb-20 {
-  margin-bottom: 20px;
+  font-size: 9px;
 }
 
-/* ===============================Printing The Receipt into pdf============== */
+/* Sticky Header: high z-index + solid background */
+#receipt .items th {
+  background-color: #f2f2f2;
+  position: sticky;
+  top: 0;
+  z-index: 999; /* Higher to ensure it stays above rows */
+}
+
+/* Footer section - stays fixed */
+.receipt-footer {
+  flex-shrink: 0;
+}
+
+/* Other Receipt Elements */
+#receipt .header {
+  text-align: center;
+  margin: 0;
+  padding: 2px;
+  font-weight: bold;
+}
+
+#receipt hr {
+  border: none;
+  border-top: 1px dashed #000;
+  margin: 5px 0;
+}
+
+#receipt p {
+  margin: 3px 0;
+  color: #000;
+  font-size: 10px;
+  padding: 1px;
+}
+
+#receipt .total {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+#receipt .details {
+  font-size: 10px;
+}
+
+#receipt .footer {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+#receipt button {
+  height: 25px;
+  width: 100%;
+  background-color: #106d96;
+  border: 1px solid #106d96;
+  color: #fff;
+  margin-top: 5px;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+#receipt button:hover {
+  background-color: #fff;
+  color: #106d96;
+}
+
+/* Brand and Price Colors */
+#r-cashier {
+  color: #e6a932;
+  font-weight: bold;
+}
+
+#r-grandTotal,
+#r-paid,
+#r-change {
+  font-weight: bold;
+}
+
+#r-change {
+  color: #2a8000;
+}
+
+/* Custom Scrollbar Styling */
+.receipt-items-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.receipt-items-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.receipt-items-container::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+.receipt-items-container::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* ===============================Print Styles============================== */
 @media print {
   body * {
-      visibility: hidden; /* Hide everything except the receipt */
+    visibility: hidden; /* Hide everything except the receipt */
   }
-  
-  #receipt, #receipt * {
-      visibility: visible; /* Show only the receipt */
+  #receipt,
+  #receipt * {
+    visibility: visible;
   }
 
   #receipt {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100mm; /* Keep a fixed width */
-      background-color: white;
-      padding: 15px;
-      font-family: 'Arial', sans-serif;
-      font-size: 16px;
-      line-height: 1.5;
-      height: auto !important; /* ✅ Auto-adjust height based on content */
-      min-height: 100mm; /* Ensures it's not too small */
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100mm; /* Fixed print width */
+    background-color: white;
+    padding: 10px;
+    font-family: "Arial", sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    height: auto !important;
+    min-height: 100mm;
+    display: block; /* Disable flex for print */
   }
 
+  /* Expand items container for printing */
   .receipt-items-container {
-      overflow: visible !important;
-      height: auto !important; /* ✅ Expands with content */
+    max-height: none !important;
+    height: auto !important;
+    overflow: visible !important;
   }
 
-  /* ✅ Fix for Table Headers (Gray Background) */
+  /* Table header & cells for print */
   .items th {
-      background-color: #f2f2f2 !important; /* ✅ Force light gray background */
-      color: black !important; /* Ensure text is visible */
-      -webkit-print-color-adjust: exact !important; /* ✅ Ensure colors print */
-      print-color-adjust: exact !important;
-      border: 1px solid #ddd;
-      padding: 8px;
-      font-size: 16px;
-      text-align: left;
+    background-color: #f2f2f2 !important;
+    color: black !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    border: 1px solid #ddd;
+    padding: 6px;
+    font-size: 14px;
+    text-align: left;
   }
-
   .items td {
-      border: 1px solid #ddd;
-      padding: 8px;
-      font-size: 16px;
-      text-align: left;
+    border: 1px solid #ddd;
+    padding: 6px;
+    font-size: 14px;
+    text-align: left;
   }
 
-  .total, .details {
-      font-weight: bold;
-      font-size: 18px;
-      margin-top: 15px;
-      text-align: left;
+  .total,
+  .details {
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 10px;
+    text-align: left;
   }
 
   .footer {
-      text-align: center;
-      font-weight: bold;
-      margin-top: 20px;
-      font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 15px;
+    font-size: 16px;
   }
+}
+
+
+/* ============Footer Summary Style================ */
+/* Summary Checkout Section */
+.summary-checkout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px; /* Reduced margin */
+}
+
+/* Summary Container */
+.summary-container {
+  height: auto; /* Adjusted height */
+  background-color: rgba(255, 248, 220, 0); /* Light cream */
+  border: 1px solid rgba(245, 197, 66, 0); /* Golden yellow */
+  padding: 0px; /* Reduced padding */
+  margin: 0px 10px 10px 10px; /* Reduced margin */
+  border-radius: 5px;
+  width: 100%; /* Adjusted to fit container */
+  font-family: Arial, sans-serif;
+}
+
+/* Summary Heading */
+.summary-container h3 {
+  text-align: center;
+  font-weight: bold;
+  color: #4d3300; /* Dark brown */
+  font-size: 12px; /* Reduced font size */
+  margin-bottom: 3px; /* Reduced margin */
+}
+
+/* Labels & Values */
+.summary-container p {
+  font-size: 10px; /* Reduced font size */
+  font-weight: bold;
+  color: #4d3300;
+  display: flex;
+  justify-content: space-between;
+  margin: 2px 0; /* Reduced margin */
+}
+
+/* Dotted Line Styling */
+.summary-container p strong {
+  flex-grow: 1;
+  margin-right: 0px; /* Added value for margin-right */
+}
+
+#Amount--paid {
+  margin-right: 0px; /* Added value for margin-right */
+  padding-right: 0px; /* Corrected typo */
+}
+
+#AmountPaid {
+  width: 100px; /* Reduced width */
+  margin-right: 10px; /* Reduced margin */
+}
+
+.summary-container p span {
+  text-align: right;
+}
+
+/* Input Field */
+.summary-container input {
+  padding: 2px; /* Reduced padding */
+  border: 1px solid #4d3300;
+  border-radius: 3px;
+  font-size: 10px; /* Reduced font size */
+  width: 100px; /* Reduced width */
+  margin-right: 10px;
+}
+
+/* Calculate Button */
+.calculate-btn {
+  background-color: #32cd32; /* Dark brown */
+  color: white;
+  border: none;
+  padding: 2px 5px; /* Reduced padding */
+  border-radius: 3px;
+  font-size: 10px; /* Reduced font size */
+  cursor: pointer;
+  
+}
+
+/* Checkout Button */
+#checkOut-btn {
+  background-color: #32cd32; /* Green */
+  color: white;
+  font-size: 10px; /* Reduced font size */
+  font-weight: bold;
+  text-transform: uppercase;
+  width: 100%;
+  padding: 4px; /* Reduced padding */
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 5px; /* Reduced margin */
+}
+
+#checkOut-btn:hover {
+  background-color: #2e8b2e; /* Darker green */
 }
 
 
