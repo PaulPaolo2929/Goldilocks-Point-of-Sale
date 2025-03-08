@@ -123,43 +123,49 @@
             </div>
           </div>
         </div>
+                    
+            <!-- Cash Drawer & Recommended Denomination -->
+            <div class="Bottom-tableContainer" style="display: flex">
+              <!-- Current Cash Drawer -->
+              <div class="cash-drawer-container" style="padding-right: 20px;">
+                <h3 style="text-align: center; margin-top: 15px; background-color: #fddd76; border-radius:7px 7px 0px 0px; border-width: 2px 2px 0px 2px; border: 2px 2px 0px 2px; border-color: #ffc107; border-style: solid; font-size: 14px; padding: 5px 5px;" >Current Cash Drawer</h3>
+                <!-- New scrollable wrapper -->
+                <div class="table-scrollable">
+                  <table border="1">
+                    <thead>
+                      <tr>
+                        <th>Bills</th>
+                        <th>No. of Bills</th>
+                        <th>Amount</th>
+                      </tr>
+                    </thead>
+                    <tbody id="cashDrawerBodyProduct">
+                      <!-- Data will be inserted here -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
 
-        <!-- Cash Drawer & Recommended Denomination -->
-        <div class="Bottom-tableContainer" style="display: flex">
-          <!-- Current Cash Drawer -->
-          <div class="cash-drawer-container" style="padding: 0px 20px">
-            <h3>Current Cash Drawer</h3>
-            <table border="1">
-              <thead>
-                <tr>
-                  <th>Bills</th>
-                  <th>No. of Bills</th>
-                  <th>Amount</th>
-                </tr>
-              </thead>
-              <tbody id="cashDrawerBodyProduct">
-                <!-- Data will be inserted here -->
-              </tbody>
-            </table>
-          </div>
-
-          <!-- Recommended Change Denomination -->
-          <div class="recommendation-container" style="padding: 0px 20px">
-            <h3>Recommended Change Denomination</h3>
-            <table>
-              <thead>
-                <tr>
-                  <th>Denomination</th>
-                  <th>Quantity</th>
-                </tr>
-              </thead>
-              <tbody id="denominationTable">
-                <!-- Change breakdown will be inserted here -->
-              </tbody>
-            </table>
-            <p>Change: <span id="changeTotal">₱0.00</span></p>
-          </div>
-        </div>
+              <!-- Recommended Change Denomination -->
+              <div class="recommendation-container">
+                <h3 style="text-align: center;">Recommended Change Denomination</h3>
+                <!-- New scrollable wrapper -->
+                <div class="table-scrollable">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Denomination</th>
+                        <th>Quantity</th>
+                      </tr>
+                    </thead>
+                    <tbody id="denominationTable">
+                      <!-- Change breakdown will be inserted here -->
+                    </tbody>
+                  </table>
+                </div>
+                <div class="change-2"><p><strong>Change: </strong><span id="changeTotal">₱0.00</span></p></div>
+              </div>
+            </div>
       </section>
 
       <!-- RIGHT SECTION: Receipt & Summary -->
