@@ -87,8 +87,25 @@ a {
   padding: 20px; /* Reduced padding */
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  
+  overflow: auto; /* Enable scrolling */
 }
+
+/* Custom Scrollbar for the .pos-left Container */
+.pos-left::-webkit-scrollbar {
+  width: 8px;
+}
+
+.pos-left::-webkit-scrollbar-thumb {
+  background-color: #fcc613;
+  border-radius: 6px;
+  border: 2px solid white;
+}
+
+.pos-left::-webkit-scrollbar-track {
+  background-color: #fff6d1;   /* Sets the track's background color */
+  border-radius: 0 10px 10px 0;  /* Rounds only the right side corners */
+}
+
 
 /* =========iNPUT FIELDS STYLE ======== */
 /* POS Header */
@@ -445,42 +462,69 @@ td {
   background: #fff7c2; /* Light yellow hover effect */
 }
 
-/* Scrollable Tables When Data Overflows */
-.cash-drawer-container,
-.recommendation-container {
+/* New Scrollable Wrapper for the Table */
+.table-scrollable {
   max-height: 150px; /* Reduced height */
-  overflow-y: auto;
+  overflow: auto;
   display: block;
 }
 
-/* Custom Scrollbar */
-.cash-drawer-container::-webkit-scrollbar,
-.recommendation-container::-webkit-scrollbar {
+/* Custom Scrollbar for the Table Wrapper */
+.table-scrollable::-webkit-scrollbar {
   width: 8px;
 }
 
-.cash-drawer-container::-webkit-scrollbar-thumb,
-.recommendation-container::-webkit-scrollbar-thumb {
+.table-scrollable::-webkit-scrollbar-thumb {
   background-color: #fcc613;
   border-radius: 6px;
   border: 2px solid white;
 }
 
-.cash-drawer-container::-webkit-scrollbar-track,
-.recommendation-container::-webkit-scrollbar-track {
+.table-scrollable::-webkit-scrollbar-track {
   background-color: #fff6d1;
   border-radius: 8px;
 }
 
-/* Maintain White Background When Empty */
+/* Maintain White Background When Table is Empty */
 .cash-drawer-container tbody:empty::before,
 .recommendation-container tbody:empty::before {
   content: " ";
   display: block;
-  height: 100px; /* Reserves space for aesthetics */
+  height: 28px; /* Reserves space for aesthetics */
   background: white;
 }
 
+/* =====H3 design */
+.recommendation-container h3{
+  text-align: center; 
+  margin-top: 15px; 
+  background-color: #fddd76; 
+  border-radius:7px 7px 0px 0px; 
+  border-width: 2px 2px 0px 2px; 
+  border: 2px 2px 0px 2px; 
+  border-color: #ffc107; 
+  border-style: solid; 
+  font-size: 14px; 
+  padding: 5px 5px;
+}
+
+.recommendation-container p{
+  text-align:left; 
+  margin-top: 0px; 
+  background-color: #ffffff; 
+  border-radius:0px 0px 7px 7px; 
+  border-width: 0px 2px 2px 2px; 
+  border: 2px 2px 0px 2px; 
+  border-color: #ffc107; 
+  border-style: solid; 
+  font-size: 14px; 
+  padding: 5px 5px;
+}
+
+.change-2{
+  display: flex;
+  justify-content: space-between;
+}
 /* ========== Right Section (Receipt) ========== */
 .pos-right {
   flex: 0 0 25%; /* 20% width for the right side */
